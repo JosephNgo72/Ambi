@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@react-navigation/material-top-tabs": "^6.6.5"
+  }
+}
