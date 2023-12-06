@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userAuthStateListener } from "../../redux/slices/authSlice"; // Make sure the path is correct
 import { NavigationContainer } from "@react-navigation/native";
@@ -17,10 +17,13 @@ import ChatSingleScreen from "../../screens/chat/single";
 import SearchScreen from "../../screens/search";
 import WordReviewScreen from "../../screens/wordReview";
 import FitCheckScreen from "../../screens/fitCheckScreen";
+import InitialScreen from "../../components/auth/onboarding/initial";
+import LoginDetailsScreen from "../../components/auth/onboarding/loginDetails";
+
+import { login, register } from "../../redux/slices/authSlice";
 
 export type RootStackParamList = {
     home: undefined;
-    auth: undefined;
     userPosts: { creator: string; profile: boolean };
     profileOther: {
         initialUserId: string;
@@ -37,6 +40,15 @@ export type RootStackParamList = {
     search: undefined;
     WordReview: undefined;
     FitCheck: undefined;
+    initial: undefined;
+    loginDetails: undefined;
+    signupDeatils: undefined;
+    accountCreated: undefined;
+    chooseYourInterest: undefined;
+    enableLocation: undefined;
+    intro1: undefined;
+    intro2: undefined;
+    intro3: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -54,16 +66,58 @@ export default function Route() {
         return <View></View>;
     }
 
+    // auth stuff
+
+    const [email, setEmail] = useState("s");
+    const [password, setPassword] = useState("");
+
+    const handleLogin = () => {
+        dispatch(login({ email, password }))
+            .unwrap()
+            .then(() => console.log("login successful"))
+            .catch(() => console.log("login unsuccessful"));
+    };
+
+    const handleRegister = () => {
+        dispatch(register({ email, password }))
+            .unwrap()
+            .then(() => {
+                console.log("register successful");
+            })
+            .catch(() => console.log("register unsuccessful"));
+    };
+
     return (
         <NavigationContainer>
             <Stack.Navigator>
                 {currentUserObj.currentUser == null ? (
-                    <Stack.Screen
-                        name="auth"
-                        component={AuthScreen}
-                        options={{ headerShown: false }}
-                    />
+                    <>
+                        <Stack.Screen
+                            name="initial"
+                            component={InitialScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="loginDetails"
+                            options={{ headerShown: false }}
+                        >
+                            {(props) => (
+                                <LoginDetailsScreen
+                                    {...props}
+                                    setEmail={setEmail}
+                                    setPassword={setPassword}
+                                    handleLogin={handleLogin}
+                                    handleRegister={handleRegister}
+                                />
+                            )}
+                        </Stack.Screen>
+                    </>
                 ) : (
+                    // <Stack.Screen
+                    //     name="auth"
+                    //     component={AuthScreen}
+                    //     options={{ headerShown: false }}
+                    // />
                     <>
                         <Stack.Screen
                             name="home"

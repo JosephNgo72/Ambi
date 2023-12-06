@@ -1,37 +1,132 @@
-import { Dispatch, SetStateAction } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { Dispatch, SetStateAction, useState } from "react";
+import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import styles from "./styles";
-import { Feather } from "@expo/vector-icons";
 
-export interface AuthMenuProps {
-  authPage: number;
-  menuMessage: string;
-  setAuthPage: Dispatch<SetStateAction<0 | 1>>;
-  setDetailsPage: Dispatch<SetStateAction<boolean>>;
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import { Feather } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
+import { login, register } from "../../../redux/slices/authSlice";
+import { AppDispatch } from "../../../redux/store";
+
+import InitialScreen from "../onboarding/initial";
+
+export interface AuthDetailsProps {
+    authPage: 0 | 1;
+    setAuthPage: Dispatch<SetStateAction<0 | 1>>;
+    setMenuMessage: Dispatch<SetStateAction<string>>;
+    setDetailsPage: Dispatch<SetStateAction<boolean>>;
 }
 
-/**
- * Function that renders a component that renders a menu to allow
- * the user to choose the auth provider and if the method should be
- * signin or signup.
- *
- * @param props passed to component
- * @param props.authPage if 0 it is in the signin state
- * if 1 is in the signup state
- * @param props.setAuthPage setter for the authPage var (0 or 1)
- * @param props.setDetailsPage setter for the variable that chooses
- * the type of page, if true show AuthMenu else show AuthDetails
- * @returns Component
- */
+export type RootStackParamList = {
+    initial: undefined;
+    loginDetails: undefined;
+    signupDeatils: undefined;
+    accountCreated: undefined;
+    chooseYourInterest: undefined;
+    enableLocation: undefined;
+    intro1: undefined;
+    intro2: undefined;
+    intro3: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+export interface AuthMenuProps {
+    authPage: number;
+    setAuthPage: Dispatch<SetStateAction<0 | 1>>;
+    menuMessage: string;
+    setMenuMessage: Dispatch<SetStateAction<string>>;
+    setDetailsPage: Dispatch<SetStateAction<boolean>>;
+}
+
 export default function AuthMenu({
-  authPage,
-  menuMessage,
-  setAuthPage,
-  setDetailsPage,
+    authPage,
+    setAuthPage,
+
+    menuMessage,
+    setMenuMessage,
+
+    setDetailsPage,
 }: AuthMenuProps) {
-  return (
-    <View style={styles.container}>
-      <View style={styles.containerMain}>
+    const [email, setEmail] = useState("s");
+    const [password, setPassword] = useState("");
+
+    const dispatch: AppDispatch = useDispatch();
+
+    const handleLogin = () => {
+        dispatch(login({ email, password }))
+            .unwrap()
+            .then(() => console.log("login successful"))
+            .catch(() => console.log("login unsuccessful"));
+    };
+
+    const handleRegister = () => {
+        dispatch(register({ email, password }))
+            .unwrap()
+            .then(() => {
+                console.log("register successful");
+                setDetailsPage(false);
+                setAuthPage(1);
+                setMenuMessage("Creating account...");
+            })
+            .catch(() => console.log("register unsuccessful"));
+    };
+
+    return (
+        <View style={styles.container}>
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen
+                        name="initial"
+                        component={InitialScreen}
+                        options={{ headerShown: false }}
+                    />
+                    {/* <Stack.Screen
+                        name="loginDetails"
+                        component={LoginDetailsScreen}
+                        options={{ headerShown: false }}
+                    /> */}
+                    {/* <Stack.Screen
+                        name="signupDeatils"
+                        component={SignupDetailsScreen}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="accountCreated"
+                        component={AccountCreatedScreen}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="chooseYourInterest"
+                        component={ChooseYourInterestScreen}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="enableLocation"
+                        component={EnableLocationScreen}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="intro1"
+                        component={Intro1Screen}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="intro2"
+                        component={Intro2Screen}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="intro3"
+                        component={Intro3Screen}
+                        options={{ headerShown: false }}
+                    /> */}
+                </Stack.Navigator>
+            </NavigationContainer>
+
+            {/* <View style={styles.containerMain}>
         <Text style={styles.headerText}>
           {authPage == 0 ? "Sign In" : "Sign Up"}
         </Text>
@@ -61,7 +156,7 @@ export default function AuthMenu({
             <Text style={styles.bottomButtonText}>Sign In</Text>
           </Text>
         )}
-      </TouchableOpacity>
-    </View>
-  );
+      </TouchableOpacity> */}
+        </View>
+    );
 }

@@ -25,13 +25,15 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         marginRight: 10,
         borderRadius: 5,
-        flex: 1,
+        // flex: 1,
         // backgroundColor: "#DCDCDC",
         paddingHorizontal: 5,
         fontSize: 16,
+        width: 250,
+        height: 145,
 
         zIndex: 1,
-        backgroundColor: "#262034",
+        backgroundColor: "white",
         borderWidth: 2,
         borderColor: "white",
         // borderRadius: 5,
@@ -42,7 +44,8 @@ const styles = StyleSheet.create({
     mediaPreview: {
         aspectRatio: 9 / 16,
         backgroundColor: "black",
-        width: 60,
+        width: 115,
+        borderRadius: 10,
     },
     cancelButton: {
         position: "absolute",

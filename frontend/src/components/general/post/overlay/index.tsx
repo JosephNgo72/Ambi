@@ -92,7 +92,7 @@ export default function PostSingleOverlay({
         <>
             <LinearGradient
                 // Background Linear Gradient
-                colors={["rgba(0,0,0,)", "transparent"]}
+                colors={["rgba(0,0,0,1)", "transparent"]}
                 style={{
                     width: "100%",
                     height: 120,
@@ -217,7 +217,7 @@ export default function PostSingleOverlay({
                         onPress={() => handleUpdateLike(currentLikeState)}
                     >
                         <Ionicons
-                            color="white"
+                            color={currentLikeState.state ? "red" : "white"}
                             size={40}
                             name={
                                 currentLikeState.state

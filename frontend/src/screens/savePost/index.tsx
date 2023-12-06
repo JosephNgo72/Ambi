@@ -77,30 +77,31 @@ export default function SavePostScreen({ route }: SavePostScreenProps) {
                     }}
                     maxLength={150}
                     onChangeText={(text) => setDescription(text)}
-                    placeholder="Enter the of restaurant"
+                    placeholder="Find the restaurant..."
                     placeholderTextColor="darkgray"
                 />
 
                 <View style={styles.formContainer}>
-                    <TextInput
-                        style={styles.inputText}
-                        maxLength={150}
-                        multiline
-                        onChangeText={(text) => setDescription(text)}
-                        placeholder="Let others know what you thought in 2000 characters or less!"
-                        placeholderTextColor="#737373"
-                    />
+                    <View>
+                        <Rating
+                            style={{ paddingVertical: 10 }}
+                            tintColor="#262034"
+                        />
+                        <TextInput
+                            style={styles.inputText}
+                            maxLength={150}
+                            multiline
+                            onChangeText={(text) => setDescription(text)}
+                            placeholder="Let others know what you thought!"
+                            placeholderTextColor="#737373"
+                        />
+                    </View>
                     <Image
                         style={styles.mediaPreview}
-                        source={{ uri: route.params.source }}
+                        source={require("./thumbnail.png")}
                     />
                 </View>
-                <Rating
-                    showRating
-                    // onFinishRating={this.ratingCompleted}
-                    style={{ paddingVertical: 10 }}
-                    tintColor="#262034"
-                />
+
                 <View style={styles.spacer} />
                 <TouchableOpacity
                     onPress={() => navigation.goBack()}
