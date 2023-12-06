@@ -116,7 +116,7 @@ export default function PostSingleOverlay({
                             onPress={() =>
                                 navigation.navigate("profileOther", {
                                     initialUserId: user?.uid ?? "",
-                                    fromFeed: true,
+                                    fromFeed: "restaurant",
                                 })
                             }
                         >
@@ -165,7 +165,7 @@ export default function PostSingleOverlay({
                             onPress={() =>
                                 navigation.navigate("otherUserProfile", {
                                     initialUserId: user?.uid ?? "",
-                                    fromFeed: false,
+                                    fromFeed: "bayarea_foodies",
                                 })
                             }
                         >

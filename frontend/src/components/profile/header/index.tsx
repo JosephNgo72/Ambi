@@ -140,8 +140,10 @@ import { Linking } from "react-native";
 
 export default function ProfileHeader({
     user,
+    otherUser,
 }: {
     user: RootState["auth"]["currentUser"];
+    otherUser?: boolean;
 }) {
     const navigation =
         useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -166,24 +168,149 @@ export default function ProfileHeader({
 
     return (
         user && (
-            <View style={styles.container}>
-                {user.photoURL ? (
-                    <Image
-                        style={{
-                            height: 150,
-                            width: 150,
-                            borderRadius: 100,
-                        }}
-                        source={{ uri: user.photoURL }}
-                    />
-                ) : (
-                    <Avatar.Icon size={150} icon={"account"} />
-                )}
-                <Text style={[{ marginTop: 10 }, styles.emailText]}>
-                    {user.displayName || user.email}
-                </Text>
+            <>
+                <View
+                    style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        width: "100%",
+                    }}
+                >
+                    <Text
+                        style={[
+                            styles.emailText,
+                            {
+                                marginTop: 10,
+                                marginLeft: 10,
+                                fontSize: 22,
+                                fontWeight: "bold",
+                            },
+                        ]}
+                    >
+                        {user.displayName || user.email}
+                    </Text>
 
-                {/* <TouchableOpacity
+                    <Feather
+                        name="settings"
+                        size={30}
+                        color="white"
+                        style={{ marginRight: 10, marginTop: 10 }}
+                    />
+                </View>
+                <View style={styles.container}>
+                    <View
+                        style={{
+                            justifyContent: "center",
+                            alignItems: "center",
+                            marginLeft: 10,
+                        }}
+                    >
+                        {user.photoURL ? (
+                            <Image
+                                style={{
+                                    marginTop: 10,
+                                    height: 80,
+                                    width: 80,
+                                    borderRadius: 100,
+                                }}
+                                source={{ uri: user.photoURL }}
+                            />
+                        ) : (
+                            <Avatar.Icon size={150} icon={"account"} />
+                        )}
+                        <Text
+                            style={[{ marginTop: 10 }, styles.descriptionText]}
+                        >
+                            @joseph_ngo
+                        </Text>
+                    </View>
+
+                    <View style={{ flexDirection: "row" }}>
+                        <View
+                            style={{
+                                justifyContent: "center",
+                                alignItems: "center",
+                                marginRight: 10,
+                            }}
+                        >
+                            <Text
+                                style={[
+                                    styles.descriptionText,
+
+                                    { marginTop: 10, fontSize: 30 },
+                                ]}
+                            >
+                                10
+                            </Text>
+                            <Text style={[styles.descriptionText]}>
+                                Reviews
+                            </Text>
+                            {!otherUser && (
+                                <TouchableOpacity
+                                    style={[
+                                        { marginTop: 20 },
+                                        buttonStyles.grayOutlinedButton,
+                                    ]}
+                                    onPress={() =>
+                                        navigation.navigate("editProfile")
+                                    }
+                                >
+                                    <Text
+                                        style={{
+                                            color: "white",
+                                            fontWeight: "700",
+                                        }}
+                                    >
+                                        Edit Profile
+                                    </Text>
+                                </TouchableOpacity>
+                            )}
+                            {otherUser && (
+                                <View
+                                    style={{
+                                        height: 55,
+                                    }}
+                                ></View>
+                            )}
+                        </View>
+                        <View
+                            style={{
+                                justifyContent: "center",
+                                alignItems: "center",
+                                marginRight: 10,
+                            }}
+                        >
+                            <Text
+                                style={[
+                                    styles.descriptionText,
+
+                                    { marginTop: 10, fontSize: 30 },
+                                ]}
+                            >
+                                152
+                            </Text>
+                            <Text style={[styles.descriptionText]}>
+                                Following
+                            </Text>
+                            <TouchableOpacity
+                                style={[
+                                    { marginTop: 20 },
+                                    buttonStyles.grayOutlinedButton,
+                                ]}
+                            >
+                                <Text
+                                    style={{
+                                        color: "white",
+                                        fontWeight: "700",
+                                    }}
+                                >
+                                    Share Profile
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    {/* <TouchableOpacity
                     style={[{ marginTop: 10 }, buttonStyles.grayOutlinedButton]}
                     onPress={() => navigation.navigate("editProfile")}
                 >
@@ -196,7 +323,8 @@ export default function ProfileHeader({
                         Edit Profile
                     </Text>
                 </TouchableOpacity> */}
-            </View>
+                </View>
+            </>
         )
     );
 }

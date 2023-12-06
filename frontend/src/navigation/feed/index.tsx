@@ -9,7 +9,7 @@ export type FeedStackParamList = {
         creator: string;
         profile: boolean;
     };
-    feedProfile: { initialUserId: string; fromFeed: boolean };
+    feedProfile: { initialUserId: string; fromFeed: string };
     feedSearch: undefined;
 };
 

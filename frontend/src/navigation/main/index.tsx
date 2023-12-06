@@ -15,6 +15,8 @@ import FeedScreen from "../../screens/feed";
 import ProfileScreen from "../../screens/profile";
 import ChatSingleScreen from "../../screens/chat/single";
 import SearchScreen from "../../screens/search";
+import WordReviewScreen from "../../screens/wordReview";
+import FitCheckScreen from "../../screens/fitCheckScreen";
 
 export type RootStackParamList = {
     home: undefined;
@@ -22,17 +24,19 @@ export type RootStackParamList = {
     userPosts: { creator: string; profile: boolean };
     profileOther: {
         initialUserId: string;
-        fromFeed: boolean;
+        fromFeed: string;
     };
     otherUserProfile: {
         initialUserId: string;
-        fromFeed: boolean;
+        fromFeed: string;
     };
     savePost: { source: string; sourceThumb: string };
     editProfile: undefined;
     editProfileField: { title: string; field: string; value: string };
     chatSingle: { chatId?: string; contactId?: string };
     search: undefined;
+    WordReview: undefined;
+    FitCheck: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -84,6 +88,16 @@ export default function Route() {
                         <Stack.Screen
                             name="otherUserProfile"
                             component={ProfileScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="WordReview"
+                            component={WordReviewScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="FitCheck"
+                            component={FitCheckScreen}
                             options={{ headerShown: false }}
                         />
                         <Stack.Screen

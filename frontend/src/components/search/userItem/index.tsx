@@ -17,7 +17,7 @@ export default function SearchUserItem({ item }: { item: SearchUser }) {
             onPress={() =>
                 navigation.navigate("profileOther", {
                     initialUserId: item?.uid ?? "",
-                    fromFeed: true,
+                    fromFeed: "true",
                 })
             }
         >

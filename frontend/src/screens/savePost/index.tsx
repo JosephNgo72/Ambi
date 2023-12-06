@@ -1,15 +1,14 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
-  ActivityIndicator,
-  Image,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  TouchableWithoutFeedback,
-  Keyboard,
-
+    ActivityIndicator,
+    Image,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+    TouchableWithoutFeedback,
+    Keyboard,
 } from "react-native";
 import styles from "./styles";
 import { Feather } from "@expo/vector-icons";
@@ -22,73 +21,108 @@ import { RootStackParamList } from "../../navigation/main";
 import { AppDispatch } from "../../redux/store";
 import { HomeStackParamList } from "../../navigation/home";
 
+import { Rating, AirbnbRating } from "react-native-ratings";
+import Autocomplete from "react-native-autocomplete-input";
+
 interface SavePostScreenProps {
-  route: RouteProp<RootStackParamList, "savePost">;
+    route: RouteProp<RootStackParamList, "savePost">;
 }
 
 export default function SavePostScreen({ route }: SavePostScreenProps) {
-  const [description, setDescription] = useState("");
-  const [requestRunning, setRequestRunning] = useState(false);
-  const navigation =
-    useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
+    const [description, setDescription] = useState("");
+    const [requestRunning, setRequestRunning] = useState(false);
+    const navigation =
+        useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
 
-  const dispatch: AppDispatch = useDispatch();
-  const handleSavePost = () => {
-    setRequestRunning(true);
-    dispatch(
-      createPost({
-        description,
-        video: route.params.source,
-        thumbnail: route.params.sourceThumb,
-      }),
-    )
-      .then(() => navigation.navigate("feed"))
-      .catch(() => setRequestRunning(false));
-  };
+    const dispatch: AppDispatch = useDispatch();
+    const handleSavePost = () => {
+        setRequestRunning(true);
+        dispatch(
+            createPost({
+                description,
+                video: route.params.source,
+                thumbnail: route.params.sourceThumb,
+            })
+        )
+            .then(() => navigation.navigate("feed"))
+            .catch(() => setRequestRunning(false));
+    };
 
-  if (requestRunning) {
+    if (requestRunning) {
+        return (
+            <View style={styles.uploadingContainer}>
+                <ActivityIndicator color="red" size="large" />
+            </View>
+        );
+    }
+
     return (
-      <View style={styles.uploadingContainer}>
-        <ActivityIndicator color="red" size="large" />
-      </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.container}>
+                <TextInput
+                    style={{
+                        width: "90%",
+                        height: 50,
+                        zIndex: 1,
+                        backgroundColor: "#262034",
+                        borderWidth: 2,
+                        borderColor: "white",
+                        borderRadius: 5,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        paddingLeft: 5,
+                        marginLeft: 20,
+                        color: "white",
+                        fontSize: 20,
+                    }}
+                    maxLength={150}
+                    onChangeText={(text) => setDescription(text)}
+                    placeholder="Enter the of restaurant"
+                    placeholderTextColor="darkgray"
+                />
+
+                <View style={styles.formContainer}>
+                    <TextInput
+                        style={styles.inputText}
+                        maxLength={150}
+                        multiline
+                        onChangeText={(text) => setDescription(text)}
+                        placeholder="Let others know what you thought in 2000 characters or less!"
+                        placeholderTextColor="#737373"
+                    />
+                    <Image
+                        style={styles.mediaPreview}
+                        source={{ uri: route.params.source }}
+                    />
+                </View>
+                <Rating
+                    showRating
+                    // onFinishRating={this.ratingCompleted}
+                    style={{ paddingVertical: 10 }}
+                    tintColor="#262034"
+                />
+                <View style={styles.spacer} />
+                <TouchableOpacity
+                    onPress={() => navigation.goBack()}
+                    style={styles.cancelButton}
+                >
+                    <Feather name="x" size={24} color="white" />
+                </TouchableOpacity>
+
+                <View style={styles.buttonsContainer}>
+                    <TouchableOpacity
+                        onPress={() => handleSavePost()}
+                        style={styles.postButton}
+                    >
+                        <Feather
+                            name="corner-left-up"
+                            size={24}
+                            color="white"
+                        />
+                        <Text style={styles.postButtonText}>Post</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </TouchableWithoutFeedback>
     );
-  }
-  return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-
-    <View style={styles.container}>
-      <View style={styles.formContainer}>
-        <TextInput
-          style={styles.inputText}
-          maxLength={150}
-          multiline
-          onChangeText={(text) => setDescription(text)}
-          placeholder="Describe your video"
-        />
-        <Image
-          style={styles.mediaPreview}
-          source={{ uri: route.params.source }}
-        />
-      </View>
-      <View style={styles.spacer} />
-      <View style={styles.buttonsContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={styles.cancelButton}
-        >
-          <Feather name="x" size={24} color="black" />
-          <Text style={styles.cancelButtonText}>Cancel</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => handleSavePost()}
-          style={styles.postButton}
-        >
-          <Feather name="corner-left-up" size={24} color="white" />
-          <Text style={styles.postButtonText}>Post</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-    </TouchableWithoutFeedback>
-  );
 }

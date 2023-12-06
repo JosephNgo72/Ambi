@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     actionButtonText: {
         color: "white",
         textAlign: "center",
-        marginTop: 4,
     },
 });
 

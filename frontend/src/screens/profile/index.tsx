@@ -18,10 +18,14 @@ import { RootStackParamList } from "../../navigation/main";
 import { HomeStackParamList } from "../../navigation/home";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { Button } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 const Tab = createMaterialTopTabNavigator();
 
 const AboutTab = () => {
+    const navigation =
+        useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     return (
         <View
             style={{
@@ -120,7 +124,7 @@ const AboutTab = () => {
                         alignItems: "center",
                     }}
                     onPress={() => {
-                        console.log("Pressed");
+                        navigation.navigate("WordReview");
                     }}
                 >
                     <Text style={{ color: "white" }}>Review</Text>
@@ -153,7 +157,7 @@ const AboutTab = () => {
                         textAlign: "center",
                     }}
                 >
-                    Keywords
+                    Fit Check
                 </Text>
                 <Button
                     style={{
@@ -165,7 +169,7 @@ const AboutTab = () => {
                         alignItems: "center",
                     }}
                     onPress={() => {
-                        console.log("Pressed");
+                        navigation.navigate("FitCheck");
                     }}
                 >
                     <Text style={{ color: "white" }}>Vote</Text>
@@ -195,7 +199,7 @@ export default function ProfileScreen({
     route: ProfileScreenRouteProp & {
         params: {
             initialUserId: string;
-            fromFeed: boolean;
+            fromFeed: string;
         };
     };
 }) {
@@ -228,7 +232,7 @@ export default function ProfileScreen({
         <SafeAreaView style={styles.container}>
             {/* <ProfileNavBar user={user} /> */}
 
-            {fromFeed && (
+            {fromFeed === "restaurant" && (
                 <>
                     <RestaurantHeader user={user} />
 
@@ -274,6 +278,20 @@ export default function ProfileScreen({
                             )}
                         </Tab.Screen>
                     </Tab.Navigator>
+                </>
+            )}
+
+            {fromFeed === "bayarea_foodies" && (
+                <>
+                    <ProfileHeader user={user} otherUser={true} />
+                    <ScrollView
+                        style={{
+                            flex: 1,
+                            backgroundColor: "#262034",
+                        }}
+                    >
+                        <ProfilePostList posts={userPosts} />
+                    </ScrollView>
                 </>
             )}
 
