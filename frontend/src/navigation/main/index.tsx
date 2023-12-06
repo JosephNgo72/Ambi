@@ -20,7 +20,14 @@ export type RootStackParamList = {
     home: undefined;
     auth: undefined;
     userPosts: { creator: string; profile: boolean };
-    profileOther: { initialUserId: string; fromFeed: boolean };
+    profileOther: {
+        initialUserId: string;
+        fromFeed: boolean;
+    };
+    otherUserProfile: {
+        initialUserId: string;
+        fromFeed: boolean;
+    };
     savePost: { source: string; sourceThumb: string };
     editProfile: undefined;
     editProfileField: { title: string; field: string; value: string };
@@ -71,6 +78,11 @@ export default function Route() {
                         />
                         <Stack.Screen
                             name="profileOther"
+                            component={ProfileScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="otherUserProfile"
                             component={ProfileScreen}
                             options={{ headerShown: false }}
                         />

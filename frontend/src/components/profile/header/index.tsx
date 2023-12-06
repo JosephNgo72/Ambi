@@ -183,7 +183,7 @@ export default function ProfileHeader({
                     {user.displayName || user.email}
                 </Text>
 
-                <TouchableOpacity
+                {/* <TouchableOpacity
                     style={[{ marginTop: 10 }, buttonStyles.grayOutlinedButton]}
                     onPress={() => navigation.navigate("editProfile")}
                 >
@@ -195,7 +195,7 @@ export default function ProfileHeader({
                     >
                         Edit Profile
                     </Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
         )
     );

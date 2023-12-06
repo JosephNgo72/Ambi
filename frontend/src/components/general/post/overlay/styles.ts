@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     description: {
-        marginTop: 10,
         color: "white",
     },
     avatar: {

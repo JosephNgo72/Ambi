@@ -185,6 +185,7 @@ const AboutTab = () => {
 
 type ProfileScreenRouteProp =
     | RouteProp<RootStackParamList, "profileOther">
+    | RouteProp<RootStackParamList, "otherUserProfile">
     | RouteProp<HomeStackParamList, "Me">
     | RouteProp<FeedStackParamList, "feedProfile">;
 
@@ -192,7 +193,10 @@ export default function ProfileScreen({
     route,
 }: {
     route: ProfileScreenRouteProp & {
-        params: { initialUserId: string; fromFeed: boolean };
+        params: {
+            initialUserId: string;
+            fromFeed: boolean;
+        };
     };
 }) {
     const { initialUserId, fromFeed } = route.params;
@@ -224,7 +228,7 @@ export default function ProfileScreen({
         <SafeAreaView style={styles.container}>
             {/* <ProfileNavBar user={user} /> */}
 
-            {user.email === "joseph72@stanford.edu" && (
+            {fromFeed && (
                 <>
                     <RestaurantHeader user={user} />
 
@@ -273,7 +277,7 @@ export default function ProfileScreen({
                 </>
             )}
 
-            {user.email !== "joseph72@stanford.edu" && (
+            {!fromFeed && (
                 <>
                     {/* {route.params.fromFeed && <RestaurantHeader user={user} />} */}
                     <ProfileHeader user={user} />

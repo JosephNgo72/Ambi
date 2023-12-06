@@ -12,6 +12,9 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../../../navigation/main";
 import { Avatar } from "react-native-paper";
+// open share model on iphone
+import * as Sharing from "expo-sharing";
+import { LinearGradient } from "expo-linear-gradient";
 
 /**
  * Function that renders a component meant to be overlapped on
@@ -86,15 +89,109 @@ export default function PostSingleOverlay({
     };
 
     return (
-        <View style={styles.container}>
-            <View>
-                <Text style={styles.displayName}>
-                    {user.displayName || user.email}
-                </Text>
-                <Text style={styles.description}>{post.description}</Text>
-            </View>
-            <View style={styles.leftContainer}>
-                <TouchableOpacity
+        <>
+            <LinearGradient
+                // Background Linear Gradient
+                colors={["rgba(0,0,0,)", "transparent"]}
+                style={{
+                    width: "100%",
+                    height: 120,
+                    position: "absolute",
+                    zIndex: 1,
+                    bottom: 0,
+                }}
+                // start at bottom of screen and go up
+                start={{ x: 0, y: 1 }}
+                end={{ x: 0, y: 0 }}
+            />
+            <View style={styles.container}>
+                <View>
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            alignItems: "center",
+                        }}
+                    >
+                        <TouchableOpacity
+                            onPress={() =>
+                                navigation.navigate("profileOther", {
+                                    initialUserId: user?.uid ?? "",
+                                    fromFeed: true,
+                                })
+                            }
+                        >
+                            <View
+                                style={{
+                                    flexDirection: "row",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    backgroundColor: "#314ABD",
+                                    paddingHorizontal: 20,
+                                    borderRadius: 5,
+                                }}
+                            >
+                                <Text style={styles.displayName}>The Edge</Text>
+                                <Ionicons
+                                    color="white"
+                                    size={30}
+                                    name={"chevron-forward-outline"}
+                                />
+                            </View>
+                        </TouchableOpacity>
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                marginLeft: 10,
+                            }}
+                        >
+                            <Ionicons color="white" size={20} name={"star"} />
+                            <Text
+                                style={[styles.displayName, { fontSize: 20 }]}
+                            >
+                                {4.2}
+                            </Text>
+                        </View>
+                    </View>
+
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            alignItems: "center",
+                        }}
+                    >
+                        <TouchableOpacity
+                            onPress={() =>
+                                navigation.navigate("otherUserProfile", {
+                                    initialUserId: user?.uid ?? "",
+                                    fromFeed: false,
+                                })
+                            }
+                        >
+                            <Text
+                                style={[
+                                    styles.displayName,
+                                    { fontSize: 20, marginRight: 5 },
+                                ]}
+                            >
+                                @bayarea_foodies
+                            </Text>
+                        </TouchableOpacity>
+                        <Ionicons
+                            name="checkmark-circle-outline"
+                            color="green"
+                            size={30}
+                        />
+                    </View>
+
+                    <Text style={[styles.description, { marginTop: 8 }]}>
+                        {post.description}
+                    </Text>
+                </View>
+
+                <View style={styles.leftContainer}>
+                    {/* <TouchableOpacity
                     onPress={() =>
                         navigation.navigate("profileOther", {
                             initialUserId: user?.uid ?? "",
@@ -114,41 +211,57 @@ export default function PostSingleOverlay({
                             icon={"account"}
                         />
                     )}
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.actionButton}
-                    onPress={() => handleUpdateLike(currentLikeState)}
-                >
-                    <Ionicons
-                        color="white"
-                        size={40}
-                        name={
-                            currentLikeState.state ? "heart" : "heart-outline"
+                </TouchableOpacity> */}
+                    <TouchableOpacity
+                        style={styles.actionButton}
+                        onPress={() => handleUpdateLike(currentLikeState)}
+                    >
+                        <Ionicons
+                            color="white"
+                            size={40}
+                            name={
+                                currentLikeState.state
+                                    ? "heart"
+                                    : "heart-outline"
+                            }
+                        />
+                        <Text style={styles.actionButtonText}>
+                            {currentLikeState.counter}
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.actionButton}
+                        onPress={() =>
+                            dispatch(
+                                openCommentModal({
+                                    open: true,
+                                    data: post,
+                                    modalType: 0,
+                                    onCommentSend: handleUpdateCommentCount,
+                                })
+                            )
                         }
-                    />
-                    <Text style={styles.actionButtonText}>
-                        {currentLikeState.counter}
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.actionButton}
-                    onPress={() =>
-                        dispatch(
-                            openCommentModal({
-                                open: true,
-                                data: post,
-                                modalType: 0,
-                                onCommentSend: handleUpdateCommentCount,
-                            })
-                        )
-                    }
-                >
-                    <Ionicons color="white" size={40} name={"chatbubble"} />
-                    <Text style={styles.actionButtonText}>
-                        {currentCommentsCount}
-                    </Text>
-                </TouchableOpacity>
+                    >
+                        <Ionicons color="white" size={40} name={"chatbubble"} />
+                        <Text style={styles.actionButtonText}>
+                            {currentCommentsCount}
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={[styles.actionButton, { marginTop: 0 }]}
+                    >
+                        <Ionicons color="white" size={40} name={"share"} />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={[
+                            styles.actionButton,
+                            { marginTop: 10, right: 0 },
+                        ]}
+                    >
+                        <Ionicons color="white" size={40} name={"bookmark"} />
+                    </TouchableOpacity>
+                </View>
             </View>
-        </View>
+        </>
     );
 }

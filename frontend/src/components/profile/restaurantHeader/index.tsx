@@ -79,7 +79,7 @@ export default function RestaurantHeader({
                     {user.photoURL ? (
                         <Image
                             style={styles.avatar}
-                            source={{ uri: user.photoURL }}
+                            source={require("./download.jpeg")}
                         />
                     ) : (
                         <Avatar.Icon size={80} icon={"account"} />
@@ -91,9 +91,7 @@ export default function RestaurantHeader({
                             width: "100%",
                         }}
                     >
-                        <Text style={styles.emailText}>
-                            {user.displayName || user.email}
-                        </Text>
+                        <Text style={styles.emailText}>The Edge</Text>
                         <Text style={styles.addressText}>
                             2.6 mi • 4149 18th St, San Francisco, CA
                         </Text>
