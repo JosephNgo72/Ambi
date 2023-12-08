@@ -6,8 +6,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { useTheme } from 'react-native-paper';
-
-
+import { LogBox } from "react-native"
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,6 +20,8 @@ const queryClient = new QueryClient({
 export default function App() {
   const theme = useTheme();
   theme.colors.secondaryContainer = "transperent"
+
+  LogBox.ignoreAllLogs(true)
 
   let [fontsLoaded] = useFonts({
     'OpenSans': require('./assets/fonts/OpenSans-Regular.ttf'),

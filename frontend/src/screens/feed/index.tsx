@@ -179,7 +179,7 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
                         zIndex: 1,
                     }}
                 >
-                    <Ionicons name="arrow-back" size={38} color="white" />
+                    <Ionicons name="chevron-back-outline" size={48} color="white" />
                 </TouchableOpacity>
             
             )}

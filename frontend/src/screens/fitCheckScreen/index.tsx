@@ -62,7 +62,7 @@ export default function FitCheckScreen() {
                             left: 10,
                         }}
                     >
-                        <Ionicons name="arrow-back" size={30} color="white" />
+                        <Ionicons name="chevron-back-outline" size={40} color="white" />
                     </TouchableOpacity>
                     <View
                         style={{
@@ -150,7 +150,7 @@ export default function FitCheckScreen() {
                             left: 10,
                         }}
                     >
-                        <Ionicons name="arrow-back" size={30} color="white" />
+                        <Ionicons name="chevron-back-outline" size={40} color="white" />
                     </TouchableOpacity>
 
                     <View

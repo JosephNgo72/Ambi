@@ -108,8 +108,8 @@ export default function WordReviewScreen() {
                             }}
                         >
                             <Ionicons
-                                name="arrow-back"
-                                size={30}
+                                name="chevron-back-outline"
+                                size={40}
                                 color="white"
                             />
                         </TouchableOpacity>
