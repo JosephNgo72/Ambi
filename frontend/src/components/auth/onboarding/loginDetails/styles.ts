@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: "white",
-        fontWeight: "bold",
-        fontSize: 16,
+        fontFamily: 'OpenSans-Semibold',
+        fontSize: 20,
     },
 });
 

@@ -40,16 +40,16 @@ export default function LoginDetailsScreen({
             style={{
                 flex: 1,
                 width: "100%",
-                justifyContent: "center",
+                justifyContent: "space-between",
                 alignItems: "center",
                 backgroundColor: "#262034",
             }}
         >
             <KeyboardAvoidingView
                 style={{
-                    flex: 1,
+                    flex: 0,
                     width: "100%",
-                    justifyContent: "center",
+                    justifyContent: "space-between",
                     alignItems: "center",
                     backgroundColor: "#262034",
                 }}
@@ -57,18 +57,19 @@ export default function LoginDetailsScreen({
                 keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
             >
                 <TouchableOpacity
-                    onPress={() => navigation.goBack()}
                     style={{
                         position: "absolute",
-                        top: 50,
+                        top: 60,
                         left: 10,
+                        bottom: 0
                     }}
+                    onPress={() => navigation.goBack()}
                 >
-                    <Ionicons name="arrow-back" size={30} color="white" />
+                    <Ionicons name="chevron-back-outline" size={40} color="white" />
                 </TouchableOpacity>
                 <View
                     style={{
-                        // justifyContent: "center",
+                        
                         alignItems: "center",
                         width: "100%",
                         height: "100%",
@@ -76,10 +77,11 @@ export default function LoginDetailsScreen({
                 >
                     <Text
                         style={{
-                            fontSize: 50,
+                            fontSize: 64,
                             fontWeight: "bold",
                             color: "white",
                             marginTop: 100,
+                            fontFamily: 'OpenSans-Semibold'
                         }}
                     >
                         Log in
@@ -94,7 +96,7 @@ export default function LoginDetailsScreen({
                             <Text
                                 style={{
                                     fontSize: 20,
-                                    fontWeight: "bold",
+                                    fontFamily: 'OpenSans-Semibold',
                                     color: "white",
                                     marginTop: 100,
                                 }}
@@ -106,7 +108,7 @@ export default function LoginDetailsScreen({
                                     setEmail("joseph.ngo72@gmail.com")
                                 }
                                 style={styles.textInput}
-                                placeholder="Email"
+                                placeholder="Username"
                             />
                         </View>
                         <View
@@ -117,14 +119,14 @@ export default function LoginDetailsScreen({
                             <Text
                                 style={{
                                     fontSize: 20,
-                                    fontWeight: "bold",
+                                    fontFamily: 'OpenSans-Semibold',
                                     color: "white",
                                 }}
                             >
                                 Password
                             </Text>
                             <TextInput
-                                onChangeText={(text) => setPassword(text)}
+                                onChangeText={(text) => setPassword("password")}
                                 style={styles.textInput}
                                 secureTextEntry
                                 placeholder="Password"

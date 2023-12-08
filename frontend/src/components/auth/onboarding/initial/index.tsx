@@ -12,32 +12,48 @@ export default function InitialScreen() {
         <View
             style={{
                 flex: 1,
-                justifyContent: "center",
+                width: "100%",
+                justifyContent: "space-between",
                 alignItems: "center",
                 backgroundColor: "#262034",
             }}
         >
             <View
                 style={{
-                    flex: 4,
-                    justifyContent: "center",
+                    paddingTop: 110,
+                    flex: 0,
+                    justifyContent: "flex-start",
                     alignItems: "center",
                 }}
             >
                 <Image
                     style={{
-                        width: 200,
-                        height: 300,
+                        height: 350,
+                        aspectRatio: 1,
+                        resizeMode: 'contain',
+                        justifyContent: "flex-start",
                     }}
-                    source={require("../assets/logo.png")}
+                    source={require("../assets/logo_name.png")}
                 />
+                
+                <Text
+                        style={{
+                            paddingTop: 18,
+                            fontSize: 22,
+                            color: "white",
+                            fontFamily: 'OpenSans-Italic'
+                        }}
+                    >
+                        vibe before you arrive.
+                    </Text>
+                
             </View>
             <View
                 style={{
-                    flex: 1,
-                    justifyContent: "center",
+                    flex: 0,
                     alignItems: "center",
                     width: "100%",
+                    paddingBottom: 60,
                 }}
             >
                 <TouchableOpacity
@@ -50,16 +66,16 @@ export default function InitialScreen() {
                         alignItems: "center",
                         margin: 10,
                     }}
-                    onPress={() => navigation.navigate("loginDetails")}
+                    onPress={() => console.log("signup")}
                 >
                     <Text
                         style={{
                             fontSize: 20,
-                            fontWeight: "bold",
                             color: "white",
+                            fontFamily: 'OpenSans-Semibold'
                         }}
                     >
-                        Login
+                        Sign Up
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -74,16 +90,16 @@ export default function InitialScreen() {
                         alignItems: "center",
                         margin: 10,
                     }}
-                    onPress={() => console.log("signup")}
+                    onPress={() => navigation.navigate("loginDetails")}
                 >
                     <Text
                         style={{
                             fontSize: 20,
-                            fontWeight: "bold",
                             color: "white",
+                            fontFamily: 'OpenSans-Semibold'
                         }}
                     >
-                        Sign Up
+                        Log In
                     </Text>
                 </TouchableOpacity>
             </View>

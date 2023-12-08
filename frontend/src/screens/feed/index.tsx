@@ -120,7 +120,7 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
                     // flexDirection: "row",
                     width: "100%",
                     position: "absolute",
-                    top: 45,
+                    top: 55,
                     zIndex: 1,
                     height: 40,
                 }}
@@ -128,12 +128,12 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
                 <Ionicons
                     style={{
                         position: "absolute",
-                        top: 7,
+                        top: 4,
                         left: 30,
                         zIndex: 1,
                     }}
                     name="search"
-                    size={24}
+                    size={20}
                     color="white"
                 />
 
@@ -142,22 +142,18 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
                         // position: "absolute",
                         // top: 45,
                         width: "90%",
-                        height: 40,
+                        height: 30,
                         zIndex: 1,
                         backgroundColor: "transparent",
-                        borderWidth: 2,
-                        borderColor: "white",
+                        borderWidth: 1,
+                        borderColor: "rgba(255, 255, 255, 0.8)",
                         borderRadius: 5,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        paddingTop: 10,
                         paddingLeft: 20,
                         marginLeft: 20,
                     }}
                     placeholderTextColor={"white"}
                     maxLength={150}
-                    multiline
-                    placeholder="      Search"
+                    placeholder="     Search"
                     onTouchStart={() => navigation.navigate("search")}
                 />
             </View>
@@ -173,7 +169,7 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
                     height: 60,
                     position: "absolute",
                     zIndex: 1,
-                    top: 80,
+                    top: 90,
                     left: 58,
                     flexDirection: "row",
                     justifyContent: "space-between",
@@ -183,16 +179,16 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
                 <View
                     style={{
                         borderBottomColor: "white",
-                        borderBottomWidth: 3,
+                        borderBottomWidth: 2,
                         width: "40%",
                     }}
                 >
                     <Text
                         style={{
-                            fontSize: 24,
-                            fontWeight: "bold",
+                            fontSize: 20,
+                            fontFamily: "OpenSans-Bold",
                             color: "white",
-                            marginLeft: 10,
+                            textAlign: "center"
                         }}
                     >
                         Discover
@@ -200,10 +196,10 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
                 </View>
                 <Text
                     style={{
-                        fontSize: 24,
-                        fontWeight: "bold",
+                        fontSize: 20,
+                        fontFamily: "OpenSans-Bold",
                         color: "white",
-                        marginLeft: 10,
+                        textAlign: "center",
                         opacity: 0.7,
                     }}
                 >
