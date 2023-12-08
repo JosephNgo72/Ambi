@@ -18,6 +18,7 @@ import { Button } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
+import { Home } from "@mui/icons-material";
 
 type FeedScreenRouteProp =
     | RouteProp<RootStackParamList, "userPosts">
@@ -40,9 +41,12 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
         CurrentUserProfileItemInViewContext
     );
 
-    const { creator, profile } = route.params as {
+    // home is true if the feed is being shown on the home screen
+    
+    let { creator, profile, home } = route.params as {
         creator: string;
         profile: boolean;
+        home?: boolean | undefined;
     };
 
     const [posts, setPosts] = useState<Post[]>([]);
@@ -164,6 +168,23 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
 
     return (
         <View style={styles.container}>
+            {home && (
+                // back button
+                <TouchableOpacity
+                    onPress={() => navigation.goBack()}
+                    style={{
+                        position: "absolute",
+                        top: 60,
+                        left: 20,
+                        zIndex: 1,
+                    }}
+                >
+                    <Ionicons name="arrow-back" size={38} color="white" />
+                </TouchableOpacity>
+            
+            )}
+            {!home && (
+                <>
             <SearchBar />
             <View
                 style={{
@@ -218,6 +239,8 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
                 </Text>
                 </TouchableOpacity>
             </View>
+            </>
+            )}
             <FlatList
                 data={posts}
                 windowSize={4}

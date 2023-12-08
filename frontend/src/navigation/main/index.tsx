@@ -25,7 +25,7 @@ import { login, register } from "../../redux/slices/authSlice";
 
 export type RootStackParamList = {
     home: undefined;
-    userPosts: { creator: string; profile: boolean };
+    userPosts: { creator: string; profile: boolean, home: boolean };
     profileOther: {
         initialUserId: string;
         fromFeed: string;

@@ -24,6 +24,7 @@ export default function ProfilePostListItem({
                     navigation.navigate("userPosts", {
                         creator: item.creator,
                         profile: true,
+                        home: true,
                     })
                 }
             >
