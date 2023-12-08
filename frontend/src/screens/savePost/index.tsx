@@ -34,7 +34,7 @@ export default function SavePostScreen({ route }: SavePostScreenProps) {
     const [requestRunning, setRequestRunning] = useState(false);
     const navigation =
         useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
-    const navigationRoot =
+const navigationRoot =
         useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
     const [verified, setVerified] = useState(false);
@@ -132,7 +132,7 @@ export default function SavePostScreen({ route }: SavePostScreenProps) {
                         marginBottom: 10,
                     }}
                 >
-                    <View
+                <View
                     style={{
                         flexDirection: "row",
                         alignItems: "center",
@@ -148,7 +148,7 @@ export default function SavePostScreen({ route }: SavePostScreenProps) {
                     >
                         Verify customer status
                     </Text>
-                    {verified &&
+{verified &&
                         <Ionicons name="checkmark-circle" size={28} color="green" />
                     }</View>
                     <Ionicons name="arrow-forward" size={28} color="white" />

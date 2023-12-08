@@ -135,7 +135,7 @@ export default function CameraScreen() {
 
   return (
     <View style={styles.container}>
-      {/* {QRCodeOverlay && (
+{/* {QRCodeOverlay && (
         <>
         <View style={{
           position: 'absolute',

@@ -50,8 +50,8 @@ export default function ProfilePostListItem({
                         <View style={{ marginLeft: 10 }}>
                             <Text
                                 style={{
-                                    fontSize: 18,
-                                    fontWeight: "bold",
+                                    fontSize: 16,
+                                    fontFamily: "OpenSans-Semibold",
                                     color: "white",
                                 }}
                             >
@@ -68,6 +68,8 @@ export default function ProfilePostListItem({
                                     style={{
                                         fontSize: 14,
                                         color: "white",
+                                        fontFamily: "OpenSans",
+                                        paddingLeft: 3,
                                     }}
                                 >
                                     4.0 (593)
@@ -77,9 +79,10 @@ export default function ProfilePostListItem({
                                         fontSize: 14,
                                         color: "gray",
                                         marginLeft: 10,
+                                        fontFamily: "OpenSans",
                                     }}
                                 >
-                                    1.2 miles
+                                    1.2 mi
                                 </Text>
                             </View>
                         </View>

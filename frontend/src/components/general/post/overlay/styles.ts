@@ -15,12 +15,15 @@ const styles = StyleSheet.create({
     },
     displayName: {
         color: "white",
-        fontWeight: "bold",
+        fontFamily: "OpenSans-Semibold",
         fontSize: 16,
         marginRight: 10,
     },
     description: {
-        color: "white",
+        color: "rgba(255, 255, 255, 0.64)",
+        paddingBottom: 15,
+        fontFamily: "OpenSans",
+        fontSize: 16,
     },
     avatar: {
         height: 50,
@@ -36,13 +39,16 @@ const styles = StyleSheet.create({
     },
     leftContainer: {
         alignItems: "center",
+        paddingBottom: 60,
     },
     actionButton: {
-        paddingBottom: 10,
+        paddingBottom: 15,
     },
     actionButtonText: {
         color: "white",
         textAlign: "center",
+        fontFamily: "OpenSans-Semibold",
+        fontSize: 13,
     },
 });
 

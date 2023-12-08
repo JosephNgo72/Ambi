@@ -25,43 +25,50 @@ const Tab = createMaterialBottomTabNavigator<HomeStackParamList>();
 export default function HomeScreen() {
     return (
         <Tab.Navigator
-            barStyle={{ backgroundColor: "black", height: 100 }}
+            screenOptions={{
+                tabBarLabelStyle: {
+                fontFamily: 'OpenSans',
+                },
+            }}
+            barStyle={{ backgroundColor: "black", height: 100, }}
             initialRouteName="feed"
-            activeColor="black"
+            activeColor="white"
             inactiveColor="white"
         >
             <Tab.Screen
                 name="feed"
                 component={FeedNavigation}
                 options={{
-                    tabBarIcon: ({ color }) => (
+                    tabBarIcon: ({ color, focused }) => (
                         <View>
-                            <Ionicons name="home" size={24} color={color} />
+                            <Ionicons name={focused ? "home" : "home-outline"} size={30} color={color} />
                         </View>
                     ),
-                    tabBarLabel: "",
+                    tabBarLabel: "Home",
                 }}
             />
             <Tab.Screen
                 name="Add"
                 component={CameraScreen}
                 options={{
-                    tabBarIcon: ({ color }) => (
-                        <Feather name="plus-square" size={30} color={color} />
+                    tabBarIcon: ({ color, focused }) => (
+                        <View>
+                            <Ionicons name={focused ? "add-circle" : "add-circle-outline"} size={30} color={color} />
+                        </View>
                     ),
-                    tabBarLabel: "",
+                    tabBarLabel: "Post",
                 }}
             />
             <Tab.Screen
                 name="Me"
                 component={ProfileScreen}
                 options={{
-                    tabBarIcon: ({ color }) => (
-                        <View style={{}}>
-                            <Feather name="user" size={24} color={color} />
+                    tabBarIcon: ({ color, focused }) => (
+                        <View>
+                            <Ionicons name={focused ? "person-circle" : "person-circle-outline"} size={30} color={color} />
                         </View>
                     ),
-                    tabBarLabel: "",
+                    tabBarLabel: "Profile",
                 }}
                 initialParams={{
                     initialUserId: FIREBASE_AUTH.currentUser?.uid ?? "",

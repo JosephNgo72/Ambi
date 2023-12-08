@@ -108,7 +108,7 @@ export default function LoginDetailsScreen({
                                     setEmail("joseph.ngo72@gmail.com")
                                 }
                                 style={styles.textInput}
-                                placeholder="Username"
+                                placeholder=""
                             />
                         </View>
                         <View
@@ -129,7 +129,7 @@ export default function LoginDetailsScreen({
                                 onChangeText={(text) => setPassword("password")}
                                 style={styles.textInput}
                                 secureTextEntry
-                                placeholder="Password"
+                                placeholder=""
                             />
                         </View>
                     </View>

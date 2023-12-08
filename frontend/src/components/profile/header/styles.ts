@@ -41,11 +41,12 @@ const styles = StyleSheet.create({
     },
     descriptionText: {
         color: "white",
-        fontSize: 16,
+        fontSize: 14,
+        fontFamily: "OpenSans-Semibold",
     },
     linkText: {
         color: "lightblue",
-        fontSize: 16,
+        fontSize: 14,
         textDecorationLine: "underline",
     },
 });

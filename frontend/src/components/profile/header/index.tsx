@@ -175,35 +175,34 @@ export default function ProfileHeader({
                         alignItems: "center",
                         justifyContent: "space-between",
                         width: "100%",
+                        marginTop: 10,
+                        paddingLeft: 20,
+                        paddingRight: 20,
                     }}
                 >
                     <Text
                         style={[
                             styles.emailText,
                             {
-                                marginTop: 10,
-                                marginLeft: 10,
-                                fontSize: 22,
-                                fontWeight: "bold",
+                                fontSize: 20,
+                                fontFamily: "OpenSans-Semibold",
                             },
                         ]}
                     >
-                        Bay Area Foodies
+                        Joseph Ngo
                     </Text>
 
-                    <Feather
-                        name="settings"
-                        size={30}
-                        color="white"
-                        style={{ marginRight: 10, marginTop: 10 }}
-                    />
+                    <Ionicons
+                                name="settings"
+                                size={35}
+                                color="white"
+                            />
                 </View>
                 <View style={styles.container}>
                     <View
                         style={{
                             justifyContent: "center",
-                            alignItems: "center",
-                            marginLeft: 10,
+                            paddingLeft: 20,
                         }}
                     >
                         {user.photoURL ? (
@@ -222,23 +221,23 @@ export default function ProfileHeader({
                         <Text
                             style={[{ marginTop: 10 }, styles.descriptionText]}
                         >
-                            @joseph_ngo
+                            @bayarea_foodies
                         </Text>
                     </View>
 
-                    <View style={{ flexDirection: "row" }}>
+                    <View style={{ flexDirection: "row", marginRight: 10 }}>
                         <View
                             style={{
                                 justifyContent: "center",
                                 alignItems: "center",
-                                marginRight: 10,
+                                paddingRight: 10,
                             }}
                         >
                             <Text
                                 style={[
                                     styles.descriptionText,
 
-                                    { marginTop: 10, fontSize: 30 },
+                                    { marginTop: 10, fontSize: 20 },
                                 ]}
                             >
                                 10
@@ -249,8 +248,13 @@ export default function ProfileHeader({
                             {!otherUser && (
                                 <TouchableOpacity
                                     style={[
-                                        { marginTop: 20 },
-                                        buttonStyles.grayOutlinedButton,
+                                        { marginTop: 13, 
+                                        borderColor: "transparent",
+                                        borderWidth: 1,
+                                        borderRadius: 4,
+                                        paddingVertical: 5,
+                                        paddingHorizontal: 10,
+                                        backgroundColor: "rgba(217, 217, 217, 0.20)"},
                                     ]}
                                     onPress={() =>
                                         navigation.navigate("editProfile")
@@ -259,7 +263,8 @@ export default function ProfileHeader({
                                     <Text
                                         style={{
                                             color: "white",
-                                            fontWeight: "700",
+                                            fontFamily: "OpenSans-Semibold",
+                                            fontSize: 14
                                         }}
                                     >
                                         Edit Profile
@@ -285,7 +290,7 @@ export default function ProfileHeader({
                                 style={[
                                     styles.descriptionText,
 
-                                    { marginTop: 10, fontSize: 30 },
+                                    { marginTop: 10, fontSize: 20 },
                                 ]}
                             >
                                 152
@@ -295,14 +300,19 @@ export default function ProfileHeader({
                             </Text>
                             <TouchableOpacity
                                 style={[
-                                    { marginTop: 20 },
-                                    buttonStyles.grayOutlinedButton,
+                                    { marginTop: 13, 
+                                    borderColor: "transparent",
+                                    borderWidth: 1,
+                                    borderRadius: 4,
+                                    paddingVertical: 5,
+                                    paddingHorizontal: 10,
+                                    backgroundColor: "rgba(217, 217, 217, 0.20)"},
                                 ]}
                             >
                                 <Text
                                     style={{
                                         color: "white",
-                                        fontWeight: "700",
+                                        fontFamily: "OpenSans-Semibold"
                                     }}
                                 >
                                     Share Profile
@@ -310,19 +320,6 @@ export default function ProfileHeader({
                             </TouchableOpacity>
                         </View>
                     </View>
-                    {/* <TouchableOpacity
-                    style={[{ marginTop: 10 }, buttonStyles.grayOutlinedButton]}
-                    onPress={() => navigation.navigate("editProfile")}
-                >
-                    <Text
-                        style={{
-                            color: "white",
-                            fontWeight: "700",
-                        }}
-                    >
-                        Edit Profile
-                    </Text>
-                </TouchableOpacity> */}
                 </View>
             </>
         )

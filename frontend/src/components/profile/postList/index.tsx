@@ -23,6 +23,7 @@ export default function ProfilePostList({
                 removeClippedSubviews
                 nestedScrollEnabled
                 data={posts}
+                contentContainerStyle={{paddingLeft: 15, paddingRight: 15}} 
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
                     <ProfilePostListItem item={item} search={search} />

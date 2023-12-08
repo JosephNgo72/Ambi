@@ -152,12 +152,13 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
                         borderWidth: 1,
                         borderColor: "rgba(255, 255, 255, 0.8)",
                         borderRadius: 5,
-                        paddingLeft: 20,
+                        paddingLeft: 35,
                         marginLeft: 20,
+                        fontFamily: "OpenSans"
                     }}
                     placeholderTextColor={"white"}
                     maxLength={150}
-                    placeholder="     Search"
+                    placeholder="Search"
                     onTouchStart={() => navigation.navigate("search")}
                 />
             </View>
@@ -168,7 +169,7 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
 
     return (
         <View style={styles.container}>
-            {home && (
+                {home && (
                 // back button
                 <TouchableOpacity
                     onPress={() => navigation.goBack()}
@@ -210,7 +211,7 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
                     <Text
                         style={{
                             fontSize: 20,
-                            fontFamily: tab === "Discover" ? "OpenSans-Bold" : "OpenSans-Regular",
+                            fontFamily: tab === "Discover" ? "OpenSans-Bold" : "OpenSans",
                             color: "white",
                             textAlign: "center"
                         }}
@@ -229,7 +230,7 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
                 <Text
                     style={{
                         fontSize: 20,
-                        fontFamily: tab === "Following" ? "OpenSans-Bold" : "OpenSans-Regular",
+                        fontFamily: tab === "Following" ? "OpenSans-Bold" : "OpenSans",
                         color: "white",
                         textAlign: "center",
                         opacity: 0.7,
@@ -239,7 +240,7 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
                 </Text>
                 </TouchableOpacity>
             </View>
-            </>
+</>
             )}
             <FlatList
                 data={posts}

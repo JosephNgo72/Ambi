@@ -114,6 +114,9 @@ export default function PostSingleOverlay({
                         }}
                     >
                         <TouchableOpacity
+                            style={{
+                                paddingBottom: 7.5,
+                            }}
                             onPress={() =>
                                 navigation.navigate("profileOther", {
                                     initialUserId: user?.uid ?? "",
@@ -135,8 +138,8 @@ export default function PostSingleOverlay({
                             >
                                 <Text style={styles.displayName}>The Edge</Text>
                                 <Ionicons
-                                    color="white"
-                                    size={30}
+                                    color="rgba(255, 255, 255, 80)"
+                                    size={20}
                                     name={"chevron-forward-outline"}
                                 />
                             </View>
@@ -147,11 +150,12 @@ export default function PostSingleOverlay({
                                 justifyContent: "center",
                                 alignItems: "center",
                                 marginLeft: 10,
+                                paddingBottom: 7.5,
                             }}
                         >
-                            <Ionicons color="white" size={20} name={"star"} />
+                            <Ionicons color="white" size={15} name={"star"} />
                             <Text
-                                style={[styles.displayName, { fontSize: 20 }]}
+                                style={[styles.displayName, { fontSize: 16, paddingLeft: 4 }]}
                             >
                                 {4.2}
                             </Text>
@@ -206,7 +210,7 @@ export default function PostSingleOverlay({
                         <Ionicons
                             color={currentLikeState.state ? "#F72585" : "white"}
                             // color={"white"}
-                            size={40}
+                            size={42}
                             name={"heart"}
                         />
                         <Text style={styles.actionButtonText}>
@@ -226,7 +230,7 @@ export default function PostSingleOverlay({
                             )
                         }
                     >
-                        <Ionicons color="white" size={40} name={"chatbubble"} />
+                        <Ionicons color="white" size={38} name={"chatbubble"} />
                         <Text style={styles.actionButtonText}>
                             {currentCommentsCount}
                         </Text>
@@ -234,17 +238,17 @@ export default function PostSingleOverlay({
                     <TouchableOpacity
                         style={[
                             styles.actionButton,
-                            { marginTop: 10, right: 0 },
                         ]}
                     >
                         <Ionicons color="white" size={40} name={"bookmark"} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.actionButton]}>
+                    <TouchableOpacity style={[styles.actionButton,
+                            { paddingTop: 5},]}>
                         {/* <Ionicons color="white" size={40} name={"share"} /> */}
-                        <Image
-                            source={require("./share.png")}
-                            style={{ width: 40, height: 40 }}
-                        />
+                        <Ionicons color="white" size={40} name={"arrow-redo"} />
+                        <Text style={styles.actionButtonText}>
+                            Share
+                        </Text>
                     </TouchableOpacity>
                 </View>
             </View>
