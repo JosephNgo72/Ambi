@@ -56,6 +56,8 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function Route() {
+    const [email, setEmail] = useState("s");
+    const [password, setPassword] = useState("");
     const currentUserObj = useSelector((state: RootState) => state.auth);
 
     const dispatch = useDispatch<AppDispatch>();
@@ -69,9 +71,6 @@ export default function Route() {
     }
 
     // auth stuff
-
-    const [email, setEmail] = useState("s");
-    const [password, setPassword] = useState("");
 
     const handleLogin = () => {
         dispatch(login({ email, password }))
