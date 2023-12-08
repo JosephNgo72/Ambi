@@ -58,7 +58,7 @@ export default function RestaurantHeader({
                     }}
                     onPress={() => navigation.goBack()}
                 >
-                    <Ionicons name="arrow-back" size={30} color="white" />
+                    <Ionicons name="chevron-back-outline" size={40} color="white" />
                 </TouchableOpacity>
 
                 <View
@@ -99,7 +99,7 @@ export default function RestaurantHeader({
                         Bar • 5439 reviews
                     </Text>
                     <Text style={styles.descriptionText}>
-                        $$$$ • Open until 2 AM
+                        $    • Open until 2 AM
                     </Text>
 
                     <Text

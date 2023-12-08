@@ -43,13 +43,14 @@ const AboutTab = () => {
                     alignItems: "flex-start",
                     paddingHorizontal: 10,
                     marginTop: 10,
+                    marginLeft: 10,
                 }}
             >
                 <Text
                     style={{
-                        color: "gray",
-                        fontSize: 20,
-                        fontWeight: "bold",
+                        color: "rgba(228, 228, 228, 0.60)",
+                        fontSize: 14,
+                        fontFamily: "OpenSans-Semibold",
                         textAlign: "center",
                     }}
                 >
@@ -59,9 +60,11 @@ const AboutTab = () => {
             <Image
                 source={require("./assets/AmbiBoard.png")}
                 style={{
-                    width: 400,
-                    height: 400,
+                    aspectRatio: 1,
+                    height: 370,
                     resizeMode: "contain",
+                    marginLeft: 10,
+                    marginRight: 10,
                 }}
             />
             <View
@@ -72,13 +75,14 @@ const AboutTab = () => {
                     alignItems: "flex-start",
                     paddingHorizontal: 10,
                     marginTop: 20,
+                    marginLeft: 10,
                 }}
             >
                 <Text
                     style={{
-                        color: "gray",
-                        fontSize: 20,
-                        fontWeight: "bold",
+                        color: "rgba(228, 228, 228, 0.60)",
+                        fontSize: 14,
+                        fontFamily: "OpenSans-Semibold",
                         textAlign: "center",
                     }}
                 >
@@ -88,9 +92,10 @@ const AboutTab = () => {
             <Image
                 source={require("./assets/PopularTimes.png")}
                 style={{
-                    width: 400,
-                    height: 180,
+                    width: 390,
                     resizeMode: "contain",
+                    marginLeft: 10,
+                    marginRight: 10,
                 }}
             />
             <View
@@ -106,9 +111,9 @@ const AboutTab = () => {
             >
                 <Text
                     style={{
-                        color: "gray",
-                        fontSize: 20,
-                        fontWeight: "bold",
+                        color: "rgba(228, 228, 228, 0.60)",
+                        fontSize: 14,
+                        fontFamily: "OpenSans-Semibold",
                         textAlign: "center",
                     }}
                 >
@@ -116,7 +121,7 @@ const AboutTab = () => {
                 </Text>
                 <Button
                     style={{
-                        backgroundColor: "#6D5D92",
+                        backgroundColor: "rgba(109, 93, 146, 0.68)",
                         borderRadius: 20,
                         width: 100,
                         height: 40,
@@ -127,7 +132,7 @@ const AboutTab = () => {
                         navigation.navigate("WordReview");
                     }}
                 >
-                    <Text style={{ color: "white" }}>Review</Text>
+                    <Text style={{ color: "white"}}>Review</Text>
                 </Button>
             </View>
             <Image
@@ -151,9 +156,9 @@ const AboutTab = () => {
             >
                 <Text
                     style={{
-                        color: "gray",
-                        fontSize: 20,
-                        fontWeight: "bold",
+                        color: "rgba(228, 228, 228, 0.60)",
+                        fontSize: 14,
+                        fontFamily: "OpenSans-Semibold",
                         textAlign: "center",
                     }}
                 >
@@ -161,7 +166,7 @@ const AboutTab = () => {
                 </Text>
                 <Button
                     style={{
-                        backgroundColor: "#6D5D92",
+                        backgroundColor: "rgba(109, 93, 146, 0.68)",
                         borderRadius: 20,
                         width: 100,
                         height: 40,
@@ -178,9 +183,10 @@ const AboutTab = () => {
             <Image
                 source={require("./assets/Fitcheck.png")}
                 style={{
-                    width: 400,
-                    height: 220,
+                    width: 390,
                     resizeMode: "contain",
+                    marginLeft: 10,
+                    marginRight: 10,
                 }}
             />
         </View>
@@ -237,12 +243,18 @@ export default function ProfileScreen({
                     <RestaurantHeader user={user} />
 
                     <Tab.Navigator
-                        screenOptions={({ route }) => ({
+                        screenOptions={({}) => ({
+                            tabBarLabelStyle: {
+                                fontFamily: 'OpenSans-Semibold',
+                                textTransform: 'none',
+                                fontSize: 18
+                                },
                             tabBarStyle: {
-                                paddingHorizontal: 5,
                                 paddingTop: 0,
                                 backgroundColor: "#262034",
                                 borderTopWidth: 0,
+                                marginLeft: 20,
+                                marginRight: 20,
                             },
                             tabBarActiveTintColor: "white",
                             tabBarPressColor: "white",
@@ -250,10 +262,13 @@ export default function ProfileScreen({
                                 backgroundColor: "white",
                                 height: 3,
                             },
-                            tabBarInactiveTintColor: "gray",
+                            tabBarInactiveTintColor: "rgba(228, 228, 228, 0.60)",
                         })}
                     >
-                        <Tab.Screen name="About">
+                        <Tab.Screen name="About"
+                        options={{
+                            tabBarLabel: "About",
+                        }}>
                             {() => (
                                 <ScrollView
                                     style={{

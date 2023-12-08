@@ -15,8 +15,8 @@ const styles = StyleSheet.create({
     },
     emailText: {
         color: "white",
-        fontSize: 20,
-        fontWeight: "bold",
+        fontSize: 16,
+        fontFamily: "OpenSans-Semibold"
     },
     counterNumberText: {
         fontWeight: "bold",
@@ -33,17 +33,20 @@ const styles = StyleSheet.create({
         borderRadius: 40,
     },
     addressText: {
-        color: "gray",
-        fontSize: 13,
+        color: "rgba(228, 228, 228, 0.60)",
+        fontSize: 12,
+        fontFamily: "OpenSans"
     },
     descriptionText: {
-        color: "white",
-        fontSize: 16,
+        color: "#E4E4E4",
+        fontSize: 14,
+        fontFamily: "OpenSans"
     },
     linkText: {
         color: "lightblue",
-        fontSize: 16,
+        fontSize: 14,
         textDecorationLine: "underline",
+        fontFamily: "OpenSans"
     },
 });
 

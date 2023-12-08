@@ -67,42 +67,64 @@ const navigationRoot =
             <View style={styles.container}>
                 <Text
                     style={{
-                        fontSize: 20,
-                        fontWeight: "bold",
+                        fontSize: 24,
+                        fontFamily: "OpenSans-Semibold",
                         color: "white",
                         marginTop: 10,
-                        marginBottom: 10,
-                        marginLeft: 22,
+                        alignSelf: "center",
                     }}
                 >
-                    Restaurant Name
+                    Great Video!
                 </Text>
-                <TextInput
+                <Text
                     style={{
-                        width: "90%",
-                        height: 50,
-                        zIndex: 1,
-                        backgroundColor: "#262034",
-                        borderBottomWidth: 2,
-                        borderColor: "white",
-                        borderRadius: 5,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        paddingLeft: 5,
-                        marginLeft: 20,
-                        color: "white",
-                        fontSize: 20,
+                        fontSize: 18,
+                        fontFamily: "OpenSans",
+                        color: "#AEAEAE",
+                        marginTop: 3,
+                        marginBottom: 10,
+                        alignSelf: "center",
                     }}
-                    maxLength={150}
-                    onChangeText={(text) => setDescription(text)}
-                    placeholder="Find the restaurant..."
-                    placeholderTextColor="darkgray"
-                />
+                >
+                    Add a review and caption
+                </Text>
+                <View style={{flexDirection: "row",}}>
+                    <Image
+                            style={{aspectRatio: 1,
+                            width: 55,
+                            resizeMode: "contain",
+                            marginLeft: 15}}
+                            source={require("./Location.png")}
+                        />
+                    <TextInput
+                        style={{
+                            width: "75%",
+                            height: 30,
+                            zIndex: 1,
+                            backgroundColor: "transparent",
+                            borderWidth: 1,
+                            borderColor: "rgba(238, 238, 238, 0.73)",
+                            borderRadius: 5,
+                            alignItems: "center",
+                            justifyContent: "center",
+                            paddingLeft: 8,
+                            marginLeft: 5,
+                            color: "white",
+                            fontSize: 16,
+                            fontFamily: "OpenSans",
+                            marginTop: 10
+                        }}
+                        maxLength={150}
+                        onChangeText={(text) => setDescription(text)}
+                        placeholder="Enter restaurant name..."
+                        placeholderTextColor="rgba(255, 255, 255, 0.85)"
+                    />
+                </View>
 
                 <View style={styles.formContainer}>
                     <View>
                         <Rating
-                            style={{ paddingVertical: 10 }}
+                            style={{ paddingVertical: 10, alignSelf: "flex-start" }}
                             tintColor="#262034"
                         />
                         <TextInput
@@ -110,7 +132,7 @@ const navigationRoot =
                             maxLength={150}
                             multiline
                             onChangeText={(text) => setDescription(text)}
-                            placeholder="Let others know what you thought!"
+                            placeholder="Let others know what you thought in 2000 characters!"
                             placeholderTextColor="#737373"
                         />
                     </View>
@@ -140,8 +162,8 @@ const navigationRoot =
                     >
                     <Text
                         style={{
-                            fontSize: 20,
-                            fontWeight: "bold",
+                            fontSize: 18,
+                            fontFamily: "OpenSans-Semibold",
                             color: "white",
                             marginRight: 10,
                         }}

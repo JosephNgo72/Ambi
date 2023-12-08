@@ -52,8 +52,9 @@ export default function WordReviewScreen() {
                     <Text
                         style={{
                             color: "white",
-                            fontSize: 28,
+                            fontSize: 22,
                             textAlign: "center",
+                            fontFamily: "OpenSans"
                         }}
                     >
                         Thank you for your review!
@@ -63,7 +64,7 @@ export default function WordReviewScreen() {
                         onPress={() => navigation.goBack()}
                         style={{
                             marginTop: 20,
-                            backgroundColor: "#314ABD",
+                            backgroundColor: "#4361EECC",
                             borderRadius: 100,
                             paddingHorizontal: 10,
                             width: 300,
@@ -71,10 +72,10 @@ export default function WordReviewScreen() {
                         labelStyle={{
                             color: "white",
                             fontSize: 20,
-                            fontWeight: "bold",
+                            fontFamily: "OpenSans-Semibold"
                         }}
                     >
-                        Back to Home
+                        Back to Restaurant
                     </Button>
                 </View>
             )}
@@ -123,7 +124,8 @@ export default function WordReviewScreen() {
                             <Text
                                 style={{
                                     color: "white",
-                                    fontSize: 28,
+                                    fontSize: 23,
+                                    fontFamily: "OpenSans",
                                     textAlign: "center",
                                 }}
                             >
@@ -136,19 +138,19 @@ export default function WordReviewScreen() {
                                 flexDirection: "row",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                backgroundColor: "#314ABD",
+                                backgroundColor: "#4361EECC",
                                 paddingHorizontal: 20,
                                 borderRadius: 5,
-                                width: 200,
-                                height: 50,
+                                width: 185,
+                                height: 45,
                                 marginTop: 20,
                             }}
                         >
                             <Text
                                 style={{
                                     color: "white",
-                                    fontWeight: "bold",
-                                    fontSize: 36,
+                                    fontSize: 28,
+                                    fontFamily: "OpenSans-Semibold",
                                 }}
                             >
                                 The Edge
@@ -158,19 +160,21 @@ export default function WordReviewScreen() {
                             source={require("../profile/assets/WordMap.png")}
                             style={{
                                 width: 400,
-                                height: 300,
+                                height: 200,
                                 resizeMode: "contain",
+                                marginTop: 30,
+                                marginBottom: 30
                             }}
                         />
                         <TextInput
                             style={{
                                 width: 300,
-                                height: 50,
+                                height: 40,
                                 backgroundColor: "white",
                                 borderRadius: 10,
                                 paddingHorizontal: 10,
                             }}
-                            placeholderTextColor={"darkgrey"}
+                            placeholderTextColor={"rgba(115, 115, 115, 0.90)"}
                             placeholder="Write your one-word review here..."
                         />
                         <Button
@@ -178,7 +182,7 @@ export default function WordReviewScreen() {
                             onPress={() => setSubmitted(true)}
                             style={{
                                 marginTop: 20,
-                                backgroundColor: "#314ABD",
+                                backgroundColor: "#4361EECC",
                                 borderRadius: 100,
                                 paddingHorizontal: 10,
                                 width: 300,
@@ -186,7 +190,7 @@ export default function WordReviewScreen() {
                             labelStyle={{
                                 color: "white",
                                 fontSize: 20,
-                                fontWeight: "bold",
+                                fontFamily: "OpenSans-Semibold",
                             }}
                         >
                             Submit

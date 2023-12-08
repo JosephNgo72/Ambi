@@ -75,8 +75,9 @@ export default function FitCheckScreen() {
                         <Text
                             style={{
                                 color: "white",
-                                fontSize: 28,
+                                fontSize: 23,
                                 textAlign: "center",
+                                fontFamily: "OpenSans"
                             }}
                         >
                             Voting results for the dress code at...
@@ -86,7 +87,7 @@ export default function FitCheckScreen() {
                                 flexDirection: "row",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                backgroundColor: "#314ABD",
+                                backgroundColor: "#4361EECC",
                                 paddingHorizontal: 20,
                                 borderRadius: 5,
                                 width: 200,
@@ -98,8 +99,8 @@ export default function FitCheckScreen() {
                             <Text
                                 style={{
                                     color: "white",
-                                    fontWeight: "bold",
-                                    fontSize: 36,
+                                    fontFamily: "OpenSans-Semibold",
+                                    fontSize: 28,
                                 }}
                             >
                                 The Edge
@@ -118,18 +119,18 @@ export default function FitCheckScreen() {
                         onPress={() => navigation.goBack()}
                         style={{
                             marginTop: 20,
-                            backgroundColor: "#314ABD",
+                            backgroundColor: "#4361EECC",
                             borderRadius: 100,
                             paddingHorizontal: 10,
                             width: 300,
                         }}
                         labelStyle={{
                             color: "white",
+                            fontFamily: "OpenSans-Semibold",
                             fontSize: 20,
-                            fontWeight: "bold",
                         }}
                     >
-                        Back to restaurant page
+                        Back to Restaurant
                     </Button>
                 </View>
             )}
@@ -163,8 +164,9 @@ export default function FitCheckScreen() {
                         <Text
                             style={{
                                 color: "white",
-                                fontSize: 28,
+                                fontSize: 23,
                                 textAlign: "center",
+                                fontFamily: "OpenSans"
                             }}
                         >
                             Select what you feel is the suitable dress code
@@ -175,7 +177,7 @@ export default function FitCheckScreen() {
                                 flexDirection: "row",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                backgroundColor: "#314ABD",
+                                backgroundColor: "#4361EECC",
                                 paddingHorizontal: 20,
                                 borderRadius: 5,
                                 width: 200,
@@ -186,8 +188,8 @@ export default function FitCheckScreen() {
                             <Text
                                 style={{
                                     color: "white",
-                                    fontWeight: "bold",
-                                    fontSize: 36,
+                                    fontFamily: "OpenSans-Semibold",
+                                    fontSize: 28,
                                 }}
                             >
                                 The Edge
@@ -202,15 +204,14 @@ export default function FitCheckScreen() {
                         onPress={() => setSubmitted(true)}
                         style={{
                             marginTop: 20,
-                            backgroundColor: "#314ABD",
+                            backgroundColor: "#4361EECC",
                             borderRadius: 100,
-                            paddingHorizontal: 10,
                             width: 300,
                         }}
                         labelStyle={{
                             color: "white",
                             fontSize: 20,
-                            fontWeight: "bold",
+                            fontFamily: "OpenSans-Semibold",
                         }}
                     >
                         Vote
