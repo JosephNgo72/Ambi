@@ -167,6 +167,49 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
     return (
         <View style={styles.container}>
             <SearchBar />
+            <View
+                style={{
+                    width: "70%",
+                    height: 60,
+                    position: "absolute",
+                    zIndex: 1,
+                    top: 80,
+                    left: 58,
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                }}
+            >
+                <View
+                    style={{
+                        borderBottomColor: "white",
+                        borderBottomWidth: 3,
+                        width: "40%",
+                    }}
+                >
+                    <Text
+                        style={{
+                            fontSize: 24,
+                            fontWeight: "bold",
+                            color: "white",
+                            marginLeft: 10,
+                        }}
+                    >
+                        Discover
+                    </Text>
+                </View>
+                <Text
+                    style={{
+                        fontSize: 24,
+                        fontWeight: "bold",
+                        color: "white",
+                        marginLeft: 10,
+                        opacity: 0.7,
+                    }}
+                >
+                    Following
+                </Text>
+            </View>
             <FlatList
                 data={posts}
                 windowSize={4}

@@ -102,7 +102,9 @@ export default function LoginDetailsScreen({
                                 Username
                             </Text>
                             <TextInput
-                                onChangeText={(text) => setEmail(text)}
+                                onChangeText={(text) =>
+                                    setEmail("joseph.ngo72@gmail.com")
+                                }
                                 style={styles.textInput}
                                 placeholder="Email"
                             />

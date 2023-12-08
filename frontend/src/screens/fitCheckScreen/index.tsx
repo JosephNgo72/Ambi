@@ -129,7 +129,7 @@ export default function FitCheckScreen() {
                             fontWeight: "bold",
                         }}
                     >
-                        Back to Home
+                        Back to restaurant page
                     </Button>
                 </View>
             )}
@@ -213,7 +213,7 @@ export default function FitCheckScreen() {
                             fontWeight: "bold",
                         }}
                     >
-                        Submit
+                        Vote
                     </Button>
                 </View>
             )}

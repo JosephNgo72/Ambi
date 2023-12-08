@@ -6,26 +6,28 @@ import SearchScreen from "../../screens/search";
 import FeedNavigation from "../feed";
 import { FIREBASE_AUTH } from "../../../firebaseConfig";
 import ChatScreen from "../../screens/chat/list";
-import { useChats } from "../../hooks/useChats";
 import { Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+
+import { Add, Home, Person } from "@mui/icons-material";
 
 export type HomeStackParamList = {
     feed: undefined;
     Discover: undefined;
     Add: undefined;
     Inbox: undefined;
-    Me: { initialUserId: string };
+    Me: { initialUserId: string; fromFeed: string };
 };
 
 const Tab = createMaterialBottomTabNavigator<HomeStackParamList>();
 
 export default function HomeScreen() {
-    useChats();
-
     return (
         <Tab.Navigator
-            barStyle={{ backgroundColor: "#262034", height: 100 }}
+            barStyle={{ backgroundColor: "black", height: 100 }}
             initialRouteName="feed"
+            activeColor="black"
+            inactiveColor="white"
         >
             <Tab.Screen
                 name="feed"
@@ -33,47 +35,29 @@ export default function HomeScreen() {
                 options={{
                     tabBarIcon: ({ color }) => (
                         <View>
-                            <Feather name="home" size={24} color={"white"} />
+                            <Ionicons name="home" size={24} color={color} />
                         </View>
                     ),
                     tabBarLabel: "",
                 }}
             />
-            {/* <Tab.Screen
-        name="Discover"
-        component={SearchScreen}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <Feather name="search" size={24} color={color} />
-          ),
-        }}
-      /> */}
             <Tab.Screen
                 name="Add"
                 component={CameraScreen}
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <Feather name="plus-square" size={30} color={"white"} />
+                        <Feather name="plus-square" size={30} color={color} />
                     ),
                     tabBarLabel: "",
                 }}
             />
-            {/* <Tab.Screen
-        name="Inbox"
-        component={ChatScreen}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <Feather name="message-square" size={24} color={color} />
-          ),
-        }}
-      /> */}
             <Tab.Screen
                 name="Me"
                 component={ProfileScreen}
                 options={{
                     tabBarIcon: ({ color }) => (
                         <View style={{}}>
-                            <Feather name="user" size={24} color={"white"} />
+                            <Feather name="user" size={24} color={color} />
                         </View>
                     ),
                     tabBarLabel: "",

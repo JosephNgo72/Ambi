@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         zIndex: 999,
         bottom: 0,
         paddingLeft: 20,
-        paddingBottom: 20,
+        paddingBottom: 40,
         paddingRight: 10,
         flexDirection: "row",
         justifyContent: "space-between",
@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
         fontSize: 16,
+        marginRight: 10,
     },
     description: {
         color: "white",
@@ -27,10 +28,8 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         borderWidth: 2,
         borderColor: "white",
-        marginBottom: 30,
     },
     defaultAvatar: {
-        marginBottom: 30,
         borderRadius: 25,
         borderWidth: 2,
         borderColor: "white",
@@ -39,7 +38,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     actionButton: {
-        paddingBottom: 16,
+        paddingBottom: 10,
     },
     actionButtonText: {
         color: "white",

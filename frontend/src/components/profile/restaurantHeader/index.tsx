@@ -45,12 +45,6 @@ export default function RestaurantHeader({
         FIREBASE_AUTH.currentUser?.uid ?? null,
         user?.uid ?? null
     );
-    const isFollowing =
-        FIREBASE_AUTH.currentUser?.uid && user?.uid && followingData.data
-            ? followingData.data
-            : false;
-
-    const isFollowingMutation = useFollowingMutation();
 
     return (
         user && (
@@ -76,14 +70,10 @@ export default function RestaurantHeader({
                         marginLeft: 100,
                     }}
                 >
-                    {user.photoURL ? (
-                        <Image
-                            style={styles.avatar}
-                            source={require("./download.jpeg")}
-                        />
-                    ) : (
-                        <Avatar.Icon size={80} icon={"account"} />
-                    )}
+                    <Image
+                        style={styles.avatar}
+                        source={require("./theedge.png")}
+                    />
 
                     <View
                         style={{

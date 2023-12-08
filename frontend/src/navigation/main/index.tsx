@@ -113,11 +113,6 @@ export default function Route() {
                         </Stack.Screen>
                     </>
                 ) : (
-                    // <Stack.Screen
-                    //     name="auth"
-                    //     component={AuthScreen}
-                    //     options={{ headerShown: false }}
-                    // />
                     <>
                         <Stack.Screen
                             name="home"

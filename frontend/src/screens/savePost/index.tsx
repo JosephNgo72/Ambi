@@ -23,6 +23,7 @@ import { HomeStackParamList } from "../../navigation/home";
 
 import { Rating, AirbnbRating } from "react-native-ratings";
 import Autocomplete from "react-native-autocomplete-input";
+import { Ionicons } from "@expo/vector-icons";
 
 interface SavePostScreenProps {
     route: RouteProp<RootStackParamList, "savePost">;
@@ -59,13 +60,25 @@ export default function SavePostScreen({ route }: SavePostScreenProps) {
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.container}>
+                <Text
+                    style={{
+                        fontSize: 20,
+                        fontWeight: "bold",
+                        color: "white",
+                        marginTop: 10,
+                        marginBottom: 10,
+                        marginLeft: 22,
+                    }}
+                >
+                    Restaurant Name
+                </Text>
                 <TextInput
                     style={{
                         width: "90%",
                         height: 50,
                         zIndex: 1,
                         backgroundColor: "#262034",
-                        borderWidth: 2,
+                        borderBottomWidth: 2,
                         borderColor: "white",
                         borderRadius: 5,
                         alignItems: "center",
@@ -102,7 +115,52 @@ export default function SavePostScreen({ route }: SavePostScreenProps) {
                     />
                 </View>
 
+                <View
+                    style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        width: "90%",
+                        marginLeft: 20,
+                        height: 50,
+                        marginBottom: 10,
+                    }}
+                >
+                    <Text
+                        style={{
+                            fontSize: 20,
+                            fontWeight: "bold",
+                            color: "white",
+                        }}
+                    >
+                        Verify customer status
+                    </Text>
+                    <Ionicons name="arrow-forward" size={28} color="white" />
+                </View>
+                <View
+                    style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        width: "90%",
+                        marginLeft: 20,
+                        height: 50,
+                    }}
+                >
+                    <Text
+                        style={{
+                            fontSize: 20,
+                            fontWeight: "bold",
+                            color: "white",
+                        }}
+                    >
+                        Add to word cloud{" "}
+                    </Text>
+                    <Ionicons name="arrow-forward" size={28} color="white" />
+                </View>
+
                 <View style={styles.spacer} />
+
                 <TouchableOpacity
                     onPress={() => navigation.goBack()}
                     style={styles.cancelButton}

@@ -127,8 +127,8 @@ export default function WordReviewScreen() {
                                     textAlign: "center",
                                 }}
                             >
-                                Leave our own one-word review about the ambiance
-                                of...
+                                Leave your own one-word review about the
+                                ambiance of...
                             </Text>
                         </View>
                         <View
@@ -157,8 +157,8 @@ export default function WordReviewScreen() {
                         <Image
                             source={require("../profile/assets/WordMap.png")}
                             style={{
-                                width: 300,
-                                height: 250,
+                                width: 400,
+                                height: 300,
                                 resizeMode: "contain",
                             }}
                         />

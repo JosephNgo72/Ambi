@@ -188,7 +188,7 @@ export default function ProfileHeader({
                             },
                         ]}
                     >
-                        {user.displayName || user.email}
+                        Bay Area Foodies
                     </Text>
 
                     <Feather
@@ -217,7 +217,7 @@ export default function ProfileHeader({
                                 source={{ uri: user.photoURL }}
                             />
                         ) : (
-                            <Avatar.Icon size={150} icon={"account"} />
+                            <Avatar.Icon size={80} icon={"account"} />
                         )}
                         <Text
                             style={[{ marginTop: 10 }, styles.descriptionText]}

@@ -106,13 +106,15 @@ export const PostSingle = forwardRef<PostSingleHandles, { item: Post }>(
                 {user && <PostSingleOverlay user={user} post={item} />}
                 <Video
                     ref={ref}
-                    style={styles.container}
+                    style={{
+                        flex: 1,
+                    }}
                     resizeMode={ResizeMode.COVER}
                     shouldPlay={false}
                     isLooping
                     usePoster
                     posterSource={{ uri: item.media[1] }}
-                    posterStyle={{ resizeMode: "cover", height: "100%" }}
+                    posterStyle={{ resizeMode: "cover", width: "100%" }}
                     source={{
                         uri: item.media[0],
                     }}

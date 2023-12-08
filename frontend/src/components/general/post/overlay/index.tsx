@@ -104,6 +104,7 @@ export default function PostSingleOverlay({
                 start={{ x: 0, y: 1 }}
                 end={{ x: 0, y: 0 }}
             />
+
             <View style={styles.container}>
                 <View>
                     <View
@@ -126,8 +127,10 @@ export default function PostSingleOverlay({
                                     justifyContent: "center",
                                     alignItems: "center",
                                     backgroundColor: "#314ABD",
-                                    paddingHorizontal: 20,
                                     borderRadius: 5,
+                                    paddingLeft: 10,
+                                    height: 30,
+                                    width: 120,
                                 }}
                             >
                                 <Text style={styles.displayName}>The Edge</Text>
@@ -178,52 +181,33 @@ export default function PostSingleOverlay({
                                 @bayarea_foodies
                             </Text>
                         </TouchableOpacity>
-                        <Ionicons
-                            name="checkmark-circle-outline"
-                            color="green"
-                            size={30}
+                        <Image
+                            source={require("./verified.png")}
+                            style={{ width: 20, height: 20 }}
                         />
                     </View>
 
-                    <Text style={[styles.description, { marginTop: 8 }]}>
-                        {post.description}
-                    </Text>
+                    <View
+                        style={{
+                            width: 300,
+                        }}
+                    >
+                        <Text style={[styles.description, { marginTop: 8 }]}>
+                            {post.description}
+                        </Text>
+                    </View>
                 </View>
 
                 <View style={styles.leftContainer}>
-                    {/* <TouchableOpacity
-                    onPress={() =>
-                        navigation.navigate("profileOther", {
-                            initialUserId: user?.uid ?? "",
-                            fromFeed: true,
-                        })
-                    }
-                >
-                    {user.photoURL ? (
-                        <Image
-                            style={styles.avatar}
-                            source={{ uri: user.photoURL }}
-                        />
-                    ) : (
-                        <Avatar.Icon
-                            style={styles.defaultAvatar}
-                            size={50}
-                            icon={"account"}
-                        />
-                    )}
-                </TouchableOpacity> */}
                     <TouchableOpacity
                         style={styles.actionButton}
                         onPress={() => handleUpdateLike(currentLikeState)}
                     >
                         <Ionicons
-                            color={currentLikeState.state ? "red" : "white"}
+                            color={currentLikeState.state ? "#F72585" : "white"}
+                            // color={"white"}
                             size={40}
-                            name={
-                                currentLikeState.state
-                                    ? "heart"
-                                    : "heart-outline"
-                            }
+                            name={"heart"}
                         />
                         <Text style={styles.actionButtonText}>
                             {currentLikeState.counter}
@@ -248,17 +232,19 @@ export default function PostSingleOverlay({
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style={[styles.actionButton, { marginTop: 0 }]}
-                    >
-                        <Ionicons color="white" size={40} name={"share"} />
-                    </TouchableOpacity>
-                    <TouchableOpacity
                         style={[
                             styles.actionButton,
                             { marginTop: 10, right: 0 },
                         ]}
                     >
                         <Ionicons color="white" size={40} name={"bookmark"} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[styles.actionButton]}>
+                        {/* <Ionicons color="white" size={40} name={"share"} /> */}
+                        <Image
+                            source={require("./share.png")}
+                            style={{ width: 40, height: 40 }}
+                        />
                     </TouchableOpacity>
                 </View>
             </View>

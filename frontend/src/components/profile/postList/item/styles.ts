@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
         flex: 1 / 2,
         height: 400,
         backgroundColor: "transparent",
-        padding: 2,
+        padding: 4,
     },
     image: {
         flex: 1,

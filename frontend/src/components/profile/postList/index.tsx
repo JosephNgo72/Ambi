@@ -5,8 +5,10 @@ import { RootState } from "../../../redux/store";
 
 export default function ProfilePostList({
     posts,
+    search,
 }: {
     posts: RootState["post"]["currentUserPosts"];
+    search?: boolean;
 }) {
     return (
         <View style={styles.container}>
@@ -22,7 +24,9 @@ export default function ProfilePostList({
                 nestedScrollEnabled
                 data={posts}
                 keyExtractor={(item) => item.id}
-                renderItem={({ item }) => <ProfilePostListItem item={item} />}
+                renderItem={({ item }) => (
+                    <ProfilePostListItem item={item} search={search} />
+                )}
             />
         </View>
     );

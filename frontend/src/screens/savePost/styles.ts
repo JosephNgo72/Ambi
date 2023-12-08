@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         // borderRadius: 5,
         alignItems: "center",
         justifyContent: "center",
-        color: "white",
+        color: "black",
     },
     mediaPreview: {
         aspectRatio: 9 / 16,
