@@ -34,6 +34,11 @@ export default function SavePostScreen({ route }: SavePostScreenProps) {
     const [requestRunning, setRequestRunning] = useState(false);
     const navigation =
         useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
+    const navigationRoot =
+        useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+    const [verified, setVerified] = useState(false);
+
 
     const dispatch: AppDispatch = useDispatch();
     const handleSavePost = () => {
@@ -115,7 +120,8 @@ export default function SavePostScreen({ route }: SavePostScreenProps) {
                     />
                 </View>
 
-                <View
+                <TouchableOpacity
+                    onPress={() => navigationRoot.navigate("QRCamera", {setVerified: setVerified} as any)}
                     style={{
                         flexDirection: "row",
                         alignItems: "center",
@@ -126,18 +132,28 @@ export default function SavePostScreen({ route }: SavePostScreenProps) {
                         marginBottom: 10,
                     }}
                 >
+                    <View
+                    style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                    }}
+                    >
                     <Text
                         style={{
                             fontSize: 20,
                             fontWeight: "bold",
                             color: "white",
+                            marginRight: 10,
                         }}
                     >
                         Verify customer status
                     </Text>
+                    {verified &&
+                        <Ionicons name="checkmark-circle" size={28} color="green" />
+                    }</View>
                     <Ionicons name="arrow-forward" size={28} color="white" />
-                </View>
-                <View
+                </TouchableOpacity>
+                {/* <View
                     style={{
                         flexDirection: "row",
                         alignItems: "center",
@@ -157,7 +173,7 @@ export default function SavePostScreen({ route }: SavePostScreenProps) {
                         Add to word cloud{" "}
                     </Text>
                     <Ionicons name="arrow-forward" size={28} color="white" />
-                </View>
+                </View> */}
 
                 <View style={styles.spacer} />
 

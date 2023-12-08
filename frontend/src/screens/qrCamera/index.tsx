@@ -27,7 +27,13 @@ import { useRoute } from '@react-navigation/native';
  * letting the user pick a video from the gallery
  * @returns Functional Component
  */
-export default function CameraScreen() {
+const QRCodeScreen: React.FC = () => {
+  // Access route and params from the route
+  const { params } = useRoute();
+
+  // Extract setVerified function from params
+  const { setVerified } = params as { setVerified: React.Dispatch<React.SetStateAction<boolean>> };
+
 
   const [hasCameraPermissions, setHasCameraPermissions] = useState(false);
   const [hasAudioPermissions, setHasAudioPermissions] = useState(false);
@@ -42,7 +48,7 @@ export default function CameraScreen() {
   const [isCameraReady, setIsCameraReady] = useState(false);
   const isFocused = useIsFocused();
 
-  // const [QRCodeOverlay, setQRCodeOverlay] = useState(false);
+  const [QRCodeOverlay, setQRCodeOverlay] = useState(false);
 
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -135,41 +141,77 @@ export default function CameraScreen() {
 
   return (
     <View style={styles.container}>
-      {/* {QRCodeOverlay && (
-        <>
+      <View style={
+        {
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#262034',
+          width: '100%',
+          height: 80,
+        }
+      }>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+          style={{
+            position: 'absolute',
+            left: 20,
+            width: 36,
+            height: 36,
+            borderRadius: 18,
+            backgroundColor: '#262034',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1
+          }}
+        >
+          <Feather name="arrow-left" size={36} color="white" />
+        </TouchableOpacity>
+        <Text style={{
+          fontSize: 24,
+          fontWeight: 'bold',
+          color: 'white',
+          marginLeft: 20,
+          top: 2
+        }}>QR Code Scanner</Text>
+      </View>
+
+
         <View style={{
           position: 'absolute',
           zIndex: 1,
-          top: 275,
-          left: 85,
-          width: 250,
-          height: 250,
+          top: 260,
+          left: 55,
+          width: 300,
+          height: 300,
           backgroundColor: 'gray',
           opacity: 0.5,
           borderRadius: 20
         }}>
         </View>
-        <View
-        style={{ 
-          position: 'absolute',
-          zIndex: 2,
-          top: 540,
-          left: 100,
-          backgroundColor: '#262034',
-          borderRadius: 20,
-          padding: 10,
-        }}>
-        <Text style={{
-         
-          color: '#F23288',
-          fontSize: 30,
-          fontWeight: 'bold'
-        
-        }}>Scan QR Code</Text>
-        </View>
-        </>
-        )
-      } */}
+
+        <TouchableOpacity
+          onPress={() => {
+            setVerified(true);
+            navigation.goBack();
+          }}
+          style={{
+            position: 'absolute',
+            zIndex: 1,
+            top: 650,
+            left: 150,
+            width: 100,
+            height: 100,
+            borderRadius: 50,
+            backgroundColor: '#262034',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Feather name="check" size={40} color="#F23288" />
+        </TouchableOpacity>
 
       {isFocused ? (
         <Camera
@@ -182,68 +224,9 @@ export default function CameraScreen() {
         />
       ) : null}
 
-      <View style={styles.sideBarContainer}>
-        <TouchableOpacity
-          style={styles.sideBarButton}
-          onPress={() =>
-            setCameraType(
-              cameraType === CameraType.back
-                ? CameraType.front
-                : CameraType.back,
-            )
-          }
-        >
-          <Feather name="refresh-ccw" size={24} color={"white"} />
-          <Text style={styles.iconText}>Flip</Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.sideBarButton}
-          onPress={() =>
-            setCameraFlash(
-              cameraFlash === FlashMode.off ? FlashMode.torch : FlashMode.off,
-            )
-          }
-        >
-          <Feather name="zap" size={24} color={"white"} />
-          <Text style={styles.iconText}>Flash</Text>
-        </TouchableOpacity>
-
-        {/* <TouchableOpacity
-          style={styles.sideBarButton}
-          onPress={() => setQRCodeOverlay(!QRCodeOverlay)}
-        >
-          <Feather name="check-square" size={24} color={"white"} />
-          <Text style={styles.iconText}>QR Code</Text>
-        </TouchableOpacity> */}
-      </View>
-
-      <View style={styles.bottomBarContainer}>
-        <View style={{ flex: 1 }}></View>
-        <View style={styles.recordButtonContainer}>
-          <TouchableOpacity
-            disabled={!isCameraReady}
-            onLongPress={() => recordVideo()}
-            onPressOut={() => stopVideo()}
-            style={styles.recordButton}
-          />
-        </View>
-        <View style={{ flex: 1 }}>
-          <TouchableOpacity
-            onPress={() => pickFromGallery()}
-            style={styles.galleryButton}
-          >
-            {galleryItems[galleryItems.length - 1] == undefined ? (
-              <></>
-            ) : (
-              <Image
-                style={styles.galleryButtonImage}
-                source={{ uri: galleryItems[galleryItems.length - 1].uri }}
-              />
-            )}
-          </TouchableOpacity>
-        </View>
-      </View>
     </View>
   );
 }
+
+export default QRCodeScreen;

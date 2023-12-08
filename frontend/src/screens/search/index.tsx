@@ -36,6 +36,14 @@ import { Keyboard } from "react-native";
 export default function SearchScreen() {
     const [textInput, setTextInput] = useState("");
     const [searchUsers, setSearchUsers] = useState<SearchUser[]>([]);
+    const [openNowFilter, setOpenNowFilter] = useState(false);
+    const [distanceFilter, setDistanceFilter] = useState(false);
+    const [ratingFilter, setRatingFilter] = useState(false);
+    const [priceFilter, setPriceFilter] = useState(false);
+
+    useEffect(() => {
+        setUserPosts(shuffle(userPosts));
+    }, [openNowFilter, distanceFilter, ratingFilter, priceFilter]);
 
     useEffect(() => {
         queryUsersByEmail(textInput).then((users) => setSearchUsers(users));
@@ -76,15 +84,6 @@ export default function SearchScreen() {
             setUserPosts(posts);
         });
     }, [user]);
-
-    const [openNowFilter, setOpenNowFilter] = useState(false);
-    const [distanceFilter, setDistanceFilter] = useState(false);
-    const [ratingFilter, setRatingFilter] = useState(false);
-    const [priceFilter, setPriceFilter] = useState(false);
-
-    useEffect(() => {
-        setUserPosts(shuffle(userPosts));
-    }, [openNowFilter, distanceFilter, ratingFilter, priceFilter]);
 
     // function that randomizes the order of the posts
     function shuffle(array: Post[]) {
@@ -245,32 +244,6 @@ export default function SearchScreen() {
                                 Price
                             </Text>
                         </TouchableOpacity>
-                    </View>
-                    <View
-                        style={{
-                            flexDirection: "row",
-                            alignItems: "center",
-                            marginLeft: 5,
-                        }}
-                    >
-                        <Text
-                            style={{
-                                fontSize: 20,
-                                fontWeight: "bold",
-                                color: "white",
-                            }}
-                        >
-                            Found 4 results for{" "}
-                        </Text>
-                        <Text
-                            style={{
-                                fontSize: 20,
-                                fontWeight: "bold",
-                                color: "#F23288",
-                            }}
-                        >
-                            {textInput}
-                        </Text>
                     </View>
                     <ScrollView
                         style={{

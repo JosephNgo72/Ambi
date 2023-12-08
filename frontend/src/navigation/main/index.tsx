@@ -19,6 +19,7 @@ import WordReviewScreen from "../../screens/wordReview";
 import FitCheckScreen from "../../screens/fitCheckScreen";
 import InitialScreen from "../../components/auth/onboarding/initial";
 import LoginDetailsScreen from "../../components/auth/onboarding/loginDetails";
+import QRCameraScreen from "../../screens/qrCamera";
 
 import { login, register } from "../../redux/slices/authSlice";
 
@@ -49,6 +50,7 @@ export type RootStackParamList = {
     intro1: undefined;
     intro2: undefined;
     intro3: undefined;
+    QRCamera: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -122,6 +124,11 @@ export default function Route() {
                         <Stack.Screen
                             name="savePost"
                             component={SavePostScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="QRCamera"
+                            component={QRCameraScreen}
                             options={{ headerShown: false }}
                         />
                         <Stack.Screen

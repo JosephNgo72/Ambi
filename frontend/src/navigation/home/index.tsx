@@ -10,6 +10,7 @@ import { Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { Add, Home, Person } from "@mui/icons-material";
+import QRCameraScreen from "../../screens/qrCamera";
 
 export type HomeStackParamList = {
     feed: undefined;

@@ -1,4 +1,4 @@
-import { FlatList, View, Dimensions, ViewToken, TextInput } from "react-native";
+import { FlatList, View, Dimensions, ViewToken, TextInput, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import PostSingle, { PostSingleHandles } from "../../components/general/post";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -83,7 +83,7 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
     );
 
     const feedItemHeight =
-        Dimensions.get("window").height - useMaterialNavBarHeight(profile);
+        Dimensions.get("window").height - useMaterialNavBarHeight(profile) - 10;
     /**
      * renders the item shown in the FlatList
      *
@@ -160,6 +160,8 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
         );
     };
 
+    const [tab, setTab] = useState("Discover");
+
     return (
         <View style={styles.container}>
             <SearchBar />
@@ -176,28 +178,37 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
                     alignItems: "center",
                 }}
             >
-                <View
+                <TouchableOpacity
+                    onPress={() => setTab("Discover")}
                     style={{
                         borderBottomColor: "white",
-                        borderBottomWidth: 2,
+                        borderBottomWidth: tab === "Discover" ? 2 : 0,
                         width: "40%",
                     }}
                 >
                     <Text
                         style={{
                             fontSize: 20,
-                            fontFamily: "OpenSans-Bold",
+                            fontFamily: tab === "Discover" ? "OpenSans-Bold" : "OpenSans-Regular",
                             color: "white",
                             textAlign: "center"
                         }}
                     >
                         Discover
                     </Text>
-                </View>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => setTab("Following")}
+                    style={{
+                        borderBottomColor: "white",
+                        borderBottomWidth: tab === "Following" ? 2 : 0,
+                        width: "40%",
+                    }}
+                >
                 <Text
                     style={{
                         fontSize: 20,
-                        fontFamily: "OpenSans-Bold",
+                        fontFamily: tab === "Following" ? "OpenSans-Bold" : "OpenSans-Regular",
                         color: "white",
                         textAlign: "center",
                         opacity: 0.7,
@@ -205,6 +216,7 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
                 >
                     Following
                 </Text>
+                </TouchableOpacity>
             </View>
             <FlatList
                 data={posts}
