@@ -6,12 +6,11 @@ import { QuerySnapshot, Unsubscribe } from "firebase/firestore";
 import { Message } from "../../types";
 
 export const useMessages = (chatId?: string, contactId?: string) => {
+  const [chatIdInst, setChatIdInst] = useState(chatId);
+  const [messages, setMessages] = useState<Message[]>([]);
   const dispatch = useDispatch();
   const currentUser = useSelector((state: RootState) => state.auth.currentUser);
   const chats = useSelector((state: RootState) => state.chat.list);
-
-  const [chatIdInst, setChatIdInst] = useState(chatId);
-  const [messages, setMessages] = useState<Message[]>([]);
 
   const handleMessagesChange = useCallback(
     (change: QuerySnapshot) => {

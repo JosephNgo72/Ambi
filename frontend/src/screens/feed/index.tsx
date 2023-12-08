@@ -37,6 +37,10 @@ interface PostViewToken extends ViewToken {
  * to display/control the posts.
  */
 export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
+    const [posts, setPosts] = useState<Post[]>([]);
+    const [tab, setTab] = useState("Discover");
+    const mediaRefs = useRef<Record<string, PostSingleHandles | null>>({});
+    
     const { setCurrentUserProfileItemInView } = useContext(
         CurrentUserProfileItemInViewContext
     );
@@ -48,9 +52,6 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
         profile: boolean;
         home?: boolean | undefined;
     };
-
-    const [posts, setPosts] = useState<Post[]>([]);
-    const mediaRefs = useRef<Record<string, PostSingleHandles | null>>({});
 
     useEffect(() => {
         if (profile && creator) {
@@ -164,8 +165,6 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
             </View>
         );
     };
-
-    const [tab, setTab] = useState("Discover");
 
     return (
         <View style={styles.container}>

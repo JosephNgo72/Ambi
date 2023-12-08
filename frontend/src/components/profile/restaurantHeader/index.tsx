@@ -31,11 +31,12 @@ export default function RestaurantHeader({
 }: {
     user: RootState["auth"]["currentUser"];
 }) {
-    const navigation =
-        useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     const [followersCount, setFollowersCount] = useState(
         user?.followersCount || 0
     );
+
+    const navigation =
+        useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
     useEffect(() => {
         setFollowersCount(user?.followersCount || 0);

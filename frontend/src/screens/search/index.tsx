@@ -40,8 +40,10 @@ export default function SearchScreen() {
     const [distanceFilter, setDistanceFilter] = useState(false);
     const [ratingFilter, setRatingFilter] = useState(false);
     const [priceFilter, setPriceFilter] = useState(false);
+    const [searched, setSearched] = useState(false);
+    const [userPosts, setUserPosts] = useState<Post[]>([]);
     
-useEffect(() => {
+    useEffect(() => {
         setUserPosts(shuffle(userPosts));
     }, [openNowFilter, distanceFilter, ratingFilter, priceFilter]);
 
@@ -53,8 +55,6 @@ useEffect(() => {
     const navigation =
         useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-    const [searched, setSearched] = useState(false);
-
     useEffect(() => {
         if (searched) {
             Keyboard.dismiss();
@@ -63,7 +63,6 @@ useEffect(() => {
 
     // user posts
     const initialUserId = "xayhPInCttXHxhxGNboPbSzSN2J2";
-    const [userPosts, setUserPosts] = useState<Post[]>([]);
 
     const providerUserId = useContext(CurrentUserProfileItemInViewContext);
 

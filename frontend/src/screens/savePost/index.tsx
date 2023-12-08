@@ -32,13 +32,12 @@ interface SavePostScreenProps {
 export default function SavePostScreen({ route }: SavePostScreenProps) {
     const [description, setDescription] = useState("");
     const [requestRunning, setRequestRunning] = useState(false);
+    const [verified, setVerified] = useState(false);
+
     const navigation =
         useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
 const navigationRoot =
         useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-
-    const [verified, setVerified] = useState(false);
-
 
     const dispatch: AppDispatch = useDispatch();
     const handleSavePost = () => {

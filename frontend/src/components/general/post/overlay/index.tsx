@@ -31,13 +31,6 @@ export default function PostSingleOverlay({
     user: User;
     post: Post;
 }) {
-    const currentUser = useSelector(
-        (state: RootState) => state.auth.currentUser
-    );
-    const dispatch: AppDispatch = useDispatch();
-    const navigation =
-        useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-
     const [currentLikeState, setCurrentLikeState] = useState({
         state: false,
         counter: post.likesCount,
@@ -45,6 +38,13 @@ export default function PostSingleOverlay({
     const [currentCommentsCount, setCurrentCommentsCount] = useState(
         post.commentsCount
     );
+
+    const currentUser = useSelector(
+        (state: RootState) => state.auth.currentUser
+    );
+    const dispatch: AppDispatch = useDispatch();
+    const navigation =
+        useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
     useEffect(() => {
         if (currentUser) {

@@ -34,6 +34,7 @@ const CommentModal = ({
 }) => {
     const [comment, setComment] = useState("");
     const [commentList, setCommentList] = useState<Comment[]>([]);
+    const [focused, setFocused] = useState(false);
     const currentUser = useSelector(
         (state: RootState) => state.auth.currentUser
     );
@@ -59,8 +60,6 @@ const CommentModal = ({
     const renderItem = ({ item }: { item: Comment }) => {
         return <CommentItem item={item} />;
     };
-
-    const [focused, setFocused] = useState(false);
 
     return (
         //     <TouchableWithoutFeedback

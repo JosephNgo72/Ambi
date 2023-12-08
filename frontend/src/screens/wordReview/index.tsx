@@ -33,10 +33,10 @@ import { Platform } from "react-native";
 import { Keyboard } from "react-native";
 
 export default function WordReviewScreen() {
+    const [submitted, setSubmitted] = useState(false);
+    
     const navigation =
         useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-
-    const [submitted, setSubmitted] = useState(false);
 
     return (
         <>

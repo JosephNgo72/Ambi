@@ -209,8 +209,8 @@ export default function ProfileScreen({
         };
     };
 }) {
-    const { initialUserId, fromFeed } = route.params;
     const [userPosts, setUserPosts] = useState<Post[]>([]);
+    const { initialUserId, fromFeed } = route.params;
 
     const providerUserId = useContext(CurrentUserProfileItemInViewContext);
 

@@ -39,10 +39,9 @@ import { StyleSheet } from "react-native";
 const { width, height } = Dimensions.get("screen");
 
 export default function FitCheckScreen() {
+    const [submitted, setSubmitted] = useState(false);
     const navigation =
         useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-
-    const [submitted, setSubmitted] = useState(false);
 
     return (
         <>

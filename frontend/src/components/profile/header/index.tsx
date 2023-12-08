@@ -145,11 +145,12 @@ export default function ProfileHeader({
     user: RootState["auth"]["currentUser"];
     otherUser?: boolean;
 }) {
-    const navigation =
-        useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     const [followersCount, setFollowersCount] = useState(
         user?.followersCount || 0
     );
+
+    const navigation =
+        useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
     useEffect(() => {
         setFollowersCount(user?.followersCount || 0);
