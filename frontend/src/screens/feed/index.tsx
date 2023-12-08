@@ -88,7 +88,7 @@ export default function FeedScreen({ route }: { route: FeedScreenRouteProp }) {
     );
 
     const feedItemHeight =
-        Dimensions.get("window").height - useMaterialNavBarHeight(profile) - 10;
+        Dimensions.get("window").height - useMaterialNavBarHeight(profile)-10;
     /**
      * renders the item shown in the FlatList
      *

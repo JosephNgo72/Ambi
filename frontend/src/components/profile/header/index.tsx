@@ -177,7 +177,7 @@ export default function ProfileHeader({
                         justifyContent: "space-between",
                         width: "100%",
                         marginTop: 10,
-                        paddingLeft: 20,
+                        paddingLeft: 70,
                         paddingRight: 20,
                     }}
                 >

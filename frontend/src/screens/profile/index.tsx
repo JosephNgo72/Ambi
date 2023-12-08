@@ -1,4 +1,4 @@
-import { ScrollView, View, Text, Image } from "react-native";
+import { ScrollView, View, Text, Image,TouchableOpacity } from "react-native";
 import styles from "./styles";
 import ProfileNavBar from "../../components/profile/navBar";
 import ProfileHeader from "../../components/profile/header";
@@ -20,6 +20,8 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { Button } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { Ionicons } from "@expo/vector-icons";
+
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -62,6 +64,8 @@ const AboutTab = () => {
                 style={{
                     aspectRatio: 1,
                     height: 370,
+                    width: "95%",
+
                     resizeMode: "contain",
                     marginLeft: 10,
                     marginRight: 10,
@@ -92,7 +96,7 @@ const AboutTab = () => {
             <Image
                 source={require("./assets/PopularTimes.png")}
                 style={{
-                    width: 390,
+                    width: "95%",
                     resizeMode: "contain",
                     marginLeft: 10,
                     marginRight: 10,
@@ -138,7 +142,7 @@ const AboutTab = () => {
             <Image
                 source={require("./assets/WordMap.png")}
                 style={{
-                    width: 400,
+                    width: "95%",
                     height: 200,
                     resizeMode: "contain",
                 }}
@@ -183,7 +187,7 @@ const AboutTab = () => {
             <Image
                 source={require("./assets/Fitcheck.png")}
                 style={{
-                    width: 390,
+                    width: "95%",
                     resizeMode: "contain",
                     marginLeft: 10,
                     marginRight: 10,
@@ -211,6 +215,10 @@ export default function ProfileScreen({
 }) {
     const [userPosts, setUserPosts] = useState<Post[]>([]);
     const { initialUserId, fromFeed } = route.params;
+
+    
+    const navigation =
+        useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
     const providerUserId = useContext(CurrentUserProfileItemInViewContext);
 
@@ -298,6 +306,17 @@ export default function ProfileScreen({
 
             {fromFeed === "bayarea_foodies" && (
                 <>
+                    <TouchableOpacity
+                        onPress={() => navigation.goBack()}
+                        style={{
+                            position: "absolute",
+                            top: 60,
+                            left: 20,
+                            zIndex: 1,
+                        }}
+                    >
+                        <Ionicons name="arrow-back" size={38} color="white" />
+                    </TouchableOpacity>
                     <ProfileHeader user={user} otherUser={true} />
                     <ScrollView
                         style={{
